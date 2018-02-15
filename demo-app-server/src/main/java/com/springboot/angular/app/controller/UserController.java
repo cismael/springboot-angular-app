@@ -1,5 +1,7 @@
 package com.springboot.angular.app.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import com.springboot.angular.app.model.User;
@@ -15,24 +17,30 @@ import java.util.List;
 @RequestMapping(value = "/users")
 public class UserController {
 
+	private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
+
 	private List<User> users = new ArrayList();
 
 	UserController() {
+		LOGGER.debug("calling constructor method : UserController");
 		this.users = buildUsers();
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
 	public List<User> getUsers() {
+		LOGGER.debug("calling method : getUsers");
 		return this.users;
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public User getUser(@PathVariable("id") Long id) {
+		LOGGER.debug("calling method : getUser");
 		return this.users.stream().filter(user -> user.getId() == id).findFirst().orElse(null);
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public User saveUser(@RequestBody User user) {
+		LOGGER.debug("calling method : saveUser");
 		Long nextId = 0L;
 		if (this.users.size() != 0) {
 			User lastUser = this.users.stream().skip(this.users.size() - 1).findFirst().orElse(null);
@@ -42,11 +50,11 @@ public class UserController {
 		user.setId(nextId);
 		this.users.add(user);
 		return user;
-
 	}
 
 	@RequestMapping(method = RequestMethod.PUT)
 	public User updateUser(@RequestBody User user) {
+		LOGGER.debug("calling method : updateUser");
 		User modifiedUser = this.users.stream().filter(u -> u.getId() == user.getId()).findFirst().orElse(null);
 		modifiedUser.setFirstName(user.getFirstName());
 		modifiedUser.setLastName(user.getLastName());
@@ -56,6 +64,7 @@ public class UserController {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public boolean deleteUser(@PathVariable Long id) {
+		LOGGER.debug("calling method : deleteUser");
 		User deleteUser = this.users.stream().filter(user -> user.getId() == id).findFirst().orElse(null);
 		if (deleteUser != null) {
 			this.users.remove(deleteUser);
@@ -63,10 +72,10 @@ public class UserController {
 		} else {
 			return false;
 		}
-
 	}
 
 	List<User> buildUsers() {
+		LOGGER.debug("calling method : buildUsers");
 		List<User> users = new ArrayList<>();
 
 		User user1 = buildUser(1L, "John", "Doe", "john@email.com");
@@ -85,6 +94,7 @@ public class UserController {
 	}
 
 	User buildUser(Long id, String fname, String lname, String email) {
+		LOGGER.debug("calling method : buildUser");
 		User user = new User();
 		user.setId(id);
 		user.setFirstName(fname);
