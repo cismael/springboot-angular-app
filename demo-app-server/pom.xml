@@ -21,9 +21,11 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
+		<maven.compiler.realase>11</maven.compiler.realase>
 
 		<!-- Dependencies versions -->
+		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+
 		<aspectj.version>1.9.7</aspectj.version>
 		<lombok.version>1.18.20</lombok.version>
 	</properties>
@@ -73,10 +75,15 @@
 
 	<build>
 		<plugins>
-
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
 			</plugin>
 
 			<plugin>
@@ -99,7 +106,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
 		</plugins>
 	</build>
 
