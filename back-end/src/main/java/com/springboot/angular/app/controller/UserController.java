@@ -2,16 +2,21 @@ package com.springboot.angular.app.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.springboot.angular.app.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Damith Ganegoda on 9/3/17.
- */
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(value = "/users")
@@ -26,19 +31,19 @@ public class UserController {
 		this.users = buildUsers();
 	}
 
-	@RequestMapping(method = RequestMethod.GET)
+	@GetMapping
 	public List<User> getUsers() {
 		LOGGER.debug("calling method : getUsers");
 		return this.users;
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/{id}")
 	public User getUser(@PathVariable("id") Long id) {
 		LOGGER.debug("calling method : getUser");
 		return this.users.stream().filter(user -> user.getId() == id).findFirst().orElse(null);
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
+	@PostMapping
 	public User saveUser(@RequestBody User user) {
 		LOGGER.debug("calling method : saveUser");
 		Long nextId = 0L;
@@ -52,20 +57,20 @@ public class UserController {
 		return user;
 	}
 
-	@RequestMapping(method = RequestMethod.PUT)
+	@PutMapping
 	public User updateUser(@RequestBody User user) {
 		LOGGER.debug("calling method : updateUser");
-		User modifiedUser = this.users.stream().filter(u -> u.getId() == user.getId()).findFirst().orElse(null);
+		final User modifiedUser = this.users.stream().filter(u -> u.getId() == user.getId()).findFirst().orElse(null);
 		modifiedUser.setFirstName(user.getFirstName());
 		modifiedUser.setLastName(user.getLastName());
 		modifiedUser.setEmail(user.getEmail());
 		return modifiedUser;
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@DeleteMapping(value = "/{id}")
 	public boolean deleteUser(@PathVariable Long id) {
 		LOGGER.debug("calling method : deleteUser");
-		User deleteUser = this.users.stream().filter(user -> user.getId() == id).findFirst().orElse(null);
+		final User deleteUser = this.users.stream().filter(user -> user.getId() == id).findFirst().orElse(null);
 		if (deleteUser != null) {
 			this.users.remove(deleteUser);
 			return true;
@@ -74,28 +79,21 @@ public class UserController {
 		}
 	}
 
-	List<User> buildUsers() {
+	private List<User> buildUsers() {
 		LOGGER.debug("calling method : buildUsers");
-		List<User> users = new ArrayList<>();
-
-		User user1 = buildUser(1L, "John", "Doe", "john@email.com");
-		User user2 = buildUser(2L, "Jon", "Smith", "smith@email.com");
-		User user3 = buildUser(3L, "Will", "Craig", "will@email.com");
-		User user4 = buildUser(4L, "Sam", "Lernorad", "sam@email.com");
-		User user5 = buildUser(5L, "Ross", "Doe", "ross@email.com");
-
-		users.add(user1);
-		users.add(user2);
-		users.add(user3);
-		users.add(user4);
-		users.add(user5);
+		final List<User> users = new ArrayList<>();
+		users.add(buildUser(1L, "John", "Doe", "john@email.com"));
+		users.add(buildUser(2L, "Jon", "Smith", "smith@email.com"));
+		users.add(buildUser(3L, "Will", "Craig", "will@email.com"));
+		users.add(buildUser(4L, "Sam", "Lernorad", "sam@email.com"));
+		users.add(buildUser(5L, "Ross", "Doe", "ross@email.com"));
 
 		return users;
 	}
 
-	User buildUser(Long id, String fname, String lname, String email) {
+	private User buildUser(final Long id, final String fname, final String lname, final String email) {
 		LOGGER.debug("calling method : buildUser");
-		User user = new User();
+		final User user = new User();
 		user.setId(id);
 		user.setFirstName(fname);
 		user.setLastName(lname);

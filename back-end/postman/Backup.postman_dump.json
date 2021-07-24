@@ -10,7 +10,6 @@
 			"events": null,
 			"variables": [],
 			"order": [
-				"2f165fbe-17b1-4d17-a1ec-09c22ea2a2c4",
 				"d872cc66-c04b-4641-b00a-08121121dbd4"
 			],
 			"folders_order": [],
@@ -18,28 +17,6 @@
 			"createdAt": "2021-07-24T15:36:02.828Z",
 			"folders": [],
 			"requests": [
-				{
-					"id": "2f165fbe-17b1-4d17-a1ec-09c22ea2a2c4",
-					"uid": "0-2f165fbe-17b1-4d17-a1ec-09c22ea2a2c4",
-					"name": "Hello World",
-					"url": "http://localhost:8080/api/hello",
-					"description": null,
-					"data": null,
-					"dataOptions": null,
-					"dataMode": null,
-					"headerData": null,
-					"method": "GET",
-					"pathVariableData": [],
-					"queryParams": [],
-					"auth": null,
-					"events": null,
-					"folder": null,
-					"responses_order": [],
-					"currentHelper": null,
-					"helperAttributes": null,
-					"collectionId": "896b5e96-0eda-438a-82d8-feb8df1634a8",
-					"pathVariables": {}
-				},
 				{
 					"id": "d872cc66-c04b-4641-b00a-08121121dbd4",
 					"uid": "0-d872cc66-c04b-4641-b00a-08121121dbd4",
@@ -67,7 +44,7 @@
 	],
 	"environments": [
 		{
-			"id": "afabf461-28f1-4640-8d9b-c1fb3d5bedb4",
+			"id": "9ed346bf-6e63-4f1b-bba9-3bb1a5a5d586",
 			"name": "My Workspace - globals",
 			"values": []
 		}
