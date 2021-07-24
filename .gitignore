@@ -34,6 +34,9 @@
 
 # dependencies
 /demo-app-client/node_modules/
+/front-end/node_modules/
+/front-end/.pnp
+/front-end/.pnp.js
 
 # misc
 /.sass-cache
@@ -80,11 +83,6 @@ hs_err_pid*
 
 target/
 !.mvn/wrapper/maven-wrapper.jar
-
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
 
 # testing
 /coverage
