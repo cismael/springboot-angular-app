@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from "../user";
 import { UserService } from "../user.service";
 import { Router } from '@angular/router';
+
+import { User } from "../user";
+
 
 @Component({
   selector: 'app-user-list',
@@ -11,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class UserListComponent implements OnInit {
 
-  private users: User[];
+  public users: User[] = [];
 
   constructor(private router: Router,
               private userService: UserService) { }
@@ -20,29 +22,32 @@ export class UserListComponent implements OnInit {
     this.getAllUsers();
   }
 
-  getAllUsers() {
-    this.userService.findAll().subscribe(
-      users => {
-        this.users = users;
-      },
-      err => {
-        console.log(err);
-      }
-
-    );
+  private getAllUsers() {
+    this.userService.findAll()
+      .subscribe(
+        response => {
+          for (let i=0; i<= response.length; i++) {
+            this.users.push(new User(response[i].id, response[i].firstName, response[i].lastName, response[i].email));
+          }
+          console.log(this.users);
+        },
+        error => {
+          console.log(error);
+        }
+      );
   }
 
-  redirectNewUserPage() {
+  public redirectNewUserPage() {
     this.router.navigate(['/user/create']);
   }
 
-  editUserPage(user: User) {
+  public editUserPage(user: User) {
     if (user) {
       this.router.navigate(['/user/edit', user.id]);
     }
   }
 
-  deleteUser(user: User) {
+  public deleteUser(user: User) {
     console.log('Delete User');
   }
 
