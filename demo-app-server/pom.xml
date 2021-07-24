@@ -22,6 +22,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+
+		<!-- Dependencies versions -->
+		<aspectj.version>1.9.7</aspectj.version>
 	</properties>
 
 	<dependencies>
@@ -44,24 +47,22 @@
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
 
-		<!-- SL4J / Logback / JUNIT : are already included inside SpringBoot -->
-
 		<!-- Spring AOP for Performance Monitoring -->
 		<dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
-            <version>1.8.13</version>
+            <version>${aspectj.version}</version>
         </dependency>
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
-            <version>1.9.7</version>
+            <version>${aspectj.version}</version>
         </dependency>
-        <dependency>
+		<!-- Spring AOP for Performance Monitoring -->
+		<dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aspects</artifactId>
         </dependency>
-        <!-- / Spring AOP for Performance Monitoring -->
 	</dependencies>
 
 	<build>
