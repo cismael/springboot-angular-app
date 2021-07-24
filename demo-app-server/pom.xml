@@ -25,6 +25,7 @@
 
 		<!-- Dependencies versions -->
 		<aspectj.version>1.9.7</aspectj.version>
+		<lombok.version>1.18.20</lombok.version>
 	</properties>
 
 	<dependencies>
@@ -58,10 +59,15 @@
 			<artifactId>aspectjrt</artifactId>
 			<version>${aspectj.version}</version>
 		</dependency>
-		<!-- Spring AOP for Performance Monitoring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aspects</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
 		</dependency>
 	</dependencies>
 
