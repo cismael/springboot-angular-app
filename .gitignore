@@ -33,7 +33,6 @@
 /out-tsc
 
 # dependencies
-/demo-app-client/node_modules/
 /front-end/node_modules/
 /front-end/.pnp
 /front-end/.pnp.js
