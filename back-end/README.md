@@ -4,12 +4,12 @@ mvn -N io.takari:maven:wrapper
 ```
 ## Can also specify the version of maven
 ```
-mvn -N io.takari:maven:wrapper -Dmaven=3.6.3
+mvn -N io.takari:maven:wrapper -Dmaven=3.8.1
 ```
 
 # To build the app
 ```
-./mvnw.cmd clean install
+./mvnw clean install
 ```
 
 # To start the app
