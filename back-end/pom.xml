@@ -31,7 +31,7 @@
 
 		<aspectj.version>1.9.7</aspectj.version>
 		<lombok.version>1.18.20</lombok.version>
-		<springfox-swagger2.version>2.9.2</springfox-swagger2.version>
+		<springfox-swagger2.version>3.0.0</springfox-swagger2.version>
 		<jackson-databind-nullable.version>0.2.1</jackson-databind-nullable.version>
 	</properties>
 
