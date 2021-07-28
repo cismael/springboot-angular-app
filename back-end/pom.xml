@@ -22,7 +22,7 @@
 
 		<maven.compiler.realase>11</maven.compiler.realase>
 		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-		<openapi-generator-maven-plugin.version>3.3.4</openapi-generator-maven-plugin.version>
+		<openapi-generator-maven-plugin.version>5.1.0</openapi-generator-maven-plugin.version>
 
 		<!-- Dependencies versions -->
 		<spring-boot.version>2.5.3</spring-boot.version>
@@ -31,7 +31,7 @@
 
 		<aspectj.version>1.9.7</aspectj.version>
 		<lombok.version>1.18.20</lombok.version>
-		<springfox-swagger2.version>2.9.2</springfox-swagger2.version>
+		<swagger-annotations.version>1.6.2</swagger-annotations.version>
 		<jackson-databind-nullable.version>0.2.1</jackson-databind-nullable.version>
 	</properties>
 
@@ -74,9 +74,9 @@
 
 			<!-- Documentation -->
 			<dependency>
-				<groupId>io.springfox</groupId>
-				<artifactId>springfox-swagger2</artifactId>
-				<version>${springfox-swagger2.version}</version>
+				<groupId>io.swagger</groupId>
+				<artifactId>swagger-annotations</artifactId>
+				<version>${swagger-annotations.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.openapitools</groupId>
@@ -97,14 +97,14 @@
 						<generatorName>spring</generatorName>
 						<configOptions>
 							<dateLibrary>java8</dateLibrary>
-							<generateModels>true</generateModels>
-							<generateModelTests>false</generateModelTests>
-							<generateModelDocumentation>false</generateModelDocumentation>
-							<generateApis>false</generateApis>
-							<generateApiTests>false</generateApiTests>
-							<generateApiDocumentation>false</generateApiDocumentation>
-							<generateSupportingFiles>false</generateSupportingFiles>
 						</configOptions>
+						<generateModels>true</generateModels>
+						<generateModelTests>false</generateModelTests>
+						<generateModelDocumentation>false</generateModelDocumentation>
+						<generateApis>false</generateApis>
+						<generateApiTests>false</generateApiTests>
+						<generateApiDocumentation>false</generateApiDocumentation>
+						<generateSupportingFiles>false</generateSupportingFiles>
 					</configuration>
 				</plugin>
 

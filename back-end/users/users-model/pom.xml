@@ -35,8 +35,8 @@
 
         <!-- Documentation -->
         <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
         </dependency>
         <dependency>
             <groupId>org.openapitools</groupId>
@@ -62,7 +62,6 @@
                         </goals>
                         <configuration>
                             <inputSpec>${openapi.users.uri}</inputSpec>
-                            <generatorName>spring</generatorName>
                             <modelPackage>com.springboot.angular.app.openapi.model</modelPackage>
                             <configOptions>
                                 <serializableModel>true</serializableModel>
