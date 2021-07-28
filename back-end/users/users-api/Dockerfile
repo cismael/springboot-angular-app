@@ -1,4 +1,4 @@
-FROM amazoncorretto:11.0.12-alpine AS build
+FROM amazoncorretto:16.0.2-alpine AS build
 
 COPY target/SpringBootAngularApp-*.jar /app/SpringBootAngularApp.jar
 
