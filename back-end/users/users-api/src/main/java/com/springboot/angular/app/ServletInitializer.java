@@ -12,7 +12,7 @@ public class ServletInitializer extends SpringBootServletInitializer {
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		LOGGER.debug("calling method : configure");
-		return application.sources(SpringBootAngularAppApplication.class);
+		return application.sources(UsersApplication.class);
 	}
 
 }

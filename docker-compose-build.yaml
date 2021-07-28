@@ -3,9 +3,9 @@ version: "3.9"
 services:
 
   # The backend app
-  back-end:
+  backend-users-api:
     build:
-      context: ./back-end
+      context: ./back-end/users/users-api
       dockerfile: Dockerfile-build
     ports:
       - "8081:8081"
@@ -18,7 +18,7 @@ services:
     restart: always
 
   # The frontend app
-  front-end:
+  frontend:
     build:
       context: ./front-end
       dockerfile: Dockerfile-build
