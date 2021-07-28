@@ -27,7 +27,7 @@
 !.vscode/extensions.json
 
 # compiled output
-/dist
+/front-end/dist
 /dist-server
 /tmp
 /out-tsc

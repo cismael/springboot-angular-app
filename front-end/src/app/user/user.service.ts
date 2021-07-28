@@ -15,8 +15,7 @@ import { IUserResponse } from "./user-response-interface";
 @Injectable()
 export class UserService {
 
-  private apiRoot = 'http://localhost:8080';
-//   private apiRoot = 'http://localhost:8080/users';
+  private apiRoot = 'http://localhost:8081';
 
   constructor(private http: HttpClient) { }
 

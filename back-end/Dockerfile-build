@@ -1,0 +1,19 @@
+### STAGE 1: Build ###
+FROM amazoncorretto:11.0.12-alpine AS build
+
+ADD . /app/
+
+WORKDIR /app
+
+RUN ./mvnw clean install
+
+COPY target/SpringBootAngularApp-*.jar /app/SpringBootAngularApp.jar
+
+### STAGE 2: Run ###
+FROM amazoncorretto:11.0.12-alpine
+
+COPY --from=build /app/SpringBootAngularApp.jar /app/SpringBootAngularApp.jar
+
+EXPOSE 8081
+
+CMD java -jar /app/SpringBootAngularApp.jar
