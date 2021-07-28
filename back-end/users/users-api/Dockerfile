@@ -1,7 +1,7 @@
-FROM amazoncorretto:11.0.12-alpine AS build
+FROM amazoncorretto:16.0.2-alpine
 
-COPY target/SpringBootAngularApp-*.jar /app/SpringBootAngularApp.jar
+COPY target/users-api-*.jar /app/users-api.jar
 
 EXPOSE 8081
 
-CMD java -jar /app/SpringBootAngularApp.jar
+CMD java -jar /app/users-api.jar

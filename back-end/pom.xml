@@ -10,6 +10,7 @@
 
 	<modules>
         <module>users</module>
+		<module>open-api-specs</module>
 	</modules>
 
 	<name>SpringBootAngularApp-Backend</name>
@@ -21,6 +22,7 @@
 
 		<maven.compiler.realase>11</maven.compiler.realase>
 		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+		<openapi-generator-maven-plugin.version>5.1.0</openapi-generator-maven-plugin.version>
 
 		<!-- Dependencies versions -->
 		<spring-boot.version>2.5.3</spring-boot.version>
@@ -29,6 +31,8 @@
 
 		<aspectj.version>1.9.7</aspectj.version>
 		<lombok.version>1.18.20</lombok.version>
+		<swagger-annotations.version>1.6.2</swagger-annotations.version>
+		<jackson-databind-nullable.version>0.2.1</jackson-databind-nullable.version>
 	</properties>
 
 	<dependencyManagement>
@@ -48,11 +52,6 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-<!--			<dependency>-->
-<!--				<groupId>org.springframework</groupId>-->
-<!--				<artifactId>spring-context-support</artifactId>-->
-<!--				<version>${spring-context-support.version}</version>-->
-<!--			</dependency>-->
 
 			<!-- Spring AOP for Performance Monitoring -->
 			<dependency>
@@ -72,6 +71,18 @@
 				<artifactId>lombok</artifactId>
 				<version>${lombok.version}</version>
 			</dependency>
+
+			<!-- Documentation -->
+			<dependency>
+				<groupId>io.swagger</groupId>
+				<artifactId>swagger-annotations</artifactId>
+				<version>${swagger-annotations.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.openapitools</groupId>
+				<artifactId>jackson-databind-nullable</artifactId>
+				<version>${jackson-databind-nullable.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -79,9 +90,39 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
+					<groupId>org.openapitools</groupId>
+					<artifactId>openapi-generator-maven-plugin</artifactId>
+					<version>${openapi-generator-maven-plugin.version}</version>
+					<configuration>
+						<generatorName>spring</generatorName>
+						<configOptions>
+							<dateLibrary>java8</dateLibrary>
+						</configOptions>
+						<generateModels>true</generateModels>
+						<generateModelTests>false</generateModelTests>
+						<generateModelDocumentation>false</generateModelDocumentation>
+						<generateApis>false</generateApis>
+						<generateApiTests>false</generateApiTests>
+						<generateApiDocumentation>false</generateApiDocumentation>
+						<generateSupportingFiles>false</generateSupportingFiles>
+					</configuration>
+				</plugin>
+
+				<plugin>
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-maven-plugin</artifactId>
 					<version>${spring-boot.version}</version>
+					<executions>
+						<execution>
+							<goals>
+								<!-- Gives build infos to "/info" endpoint-->
+								<goal>build-info</goal>
+								<!-- Executes "spring-boot:repackage" automatically when "mvn package" is executed -->
+								<!-- So we can excutes target file like "java -jar target/my-target.jar -->
+								<goal>repackage</goal>
+							</goals>
+						</execution>
+					</executions>
 				</plugin>
 
 				<plugin>
@@ -107,7 +148,7 @@
 								<outputDirectory>${basedir}/target/classes/static/</outputDirectory>
 								<resources>
 									<resource>
-										<directory>${basedir}/../demo-app-client/dist</directory>
+										<directory>${basedir}/../front-end/dist</directory>
 									</resource>
 								</resources>
 							</configuration>

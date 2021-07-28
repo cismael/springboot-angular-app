@@ -1,6 +1,6 @@
 package com.springboot.angular.app.service;
 
-import com.springboot.angular.app.model.User;
+import com.springboot.angular.app.openapi.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
