@@ -5,21 +5,20 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.springboot.angular.app</groupId>
         <artifactId>SpringBootAngularApp</artifactId>
+        <groupId>com.springboot.angular.app</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>users</artifactId>
+    <groupId>com.springboot.angular.app.doc</groupId>
+    <artifactId>open-api-specs</artifactId>
     <packaging>pom</packaging>
 
-    <modules>
-        <module>users-api</module>
-        <module>users-model</module>
-    </modules>
+    <name>Open API specs of the project</name>
 
     <properties>
-        <multiproject.basedir>${basedir}/..</multiproject.basedir>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
     </properties>
 
 </project>

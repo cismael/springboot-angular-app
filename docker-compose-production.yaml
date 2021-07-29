@@ -3,7 +3,7 @@ version: "3.9"
 services:
 
   # The backend app
-  back-end:
+  backend:
     image: cismael/springbootangularapp_back-end
     ports:
       - "8081:8081"
@@ -16,7 +16,7 @@ services:
     restart: always
 
   # The frontend app
-  front-end:
+  frontend:
     image: cismael/springbootangularapp_front-end
     ports:
       - "4200:80"

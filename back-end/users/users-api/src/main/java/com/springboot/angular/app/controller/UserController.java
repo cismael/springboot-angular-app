@@ -1,6 +1,6 @@
 package com.springboot.angular.app.controller;
 
-import com.springboot.angular.app.model.User;
+import com.springboot.angular.app.openapi.model.User;
 import com.springboot.angular.app.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
