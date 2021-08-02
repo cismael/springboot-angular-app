@@ -86,21 +86,11 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.js",
-              "node_modules/bxslider/dist/jquery.bxslider.min.js",
-              "node_modules/lightbox2/dist/js/lightbox.min.js",
-              "node_modules/jquery-tagcanvas/jquery.tagcanvas.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.js"
             ],
             "styles": [
-              "node_modules/normalize.css/normalize.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/font-awesome/css/font-awesome.css",
-              "node_modules/bxslider/dist/jquery.bxslider.min.css",
-              "node_modules/lightbox2/dist/css/lightbox.min.css",
-              "node_modules/primeng/resources/themes/saga-blue/theme.css",
-              "node_modules/primeng/resources/primeng.min.css",
-              "node_modules/primeicons/primeicons.css",
               "src/styles.css"
             ],
             "assets": [
