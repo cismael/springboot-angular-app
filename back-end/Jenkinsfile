@@ -1,0 +1,40 @@
+pipeline {
+    agent any
+
+    environment {
+        projectName = 'Simple Jenkinsfile'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // You can choose to clean workspace before build as follows
+                cleanWs()
+                checkout scm
+            }
+        }
+        stage ('Build') {
+            steps {
+                script {
+                     sh "./mvnw.cmd clean install"
+//                     if(isUnix()){
+//                         echo 'UNIX------------------------------'
+//                         sh './mvnw clean install'
+//                     } else {
+//                         echo 'WINDOWS---------------------------'
+//                         bat './mvnw.cmd clean install'
+//                     }
+                }
+            }
+        }
+
+        //Other steps can be added here
+
+        stage("Deploy"){
+            steps{
+              // Then clean the workspace after deployment ignoring node_modules directory
+                cleanWs deleteDirs: true
+            }
+        }
+    }
+}
