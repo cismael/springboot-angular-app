@@ -24,6 +24,9 @@
 		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
 		<openapi-generator-maven-plugin.version>5.2.0</openapi-generator-maven-plugin.version>
 
+		<!-- SonarQube -->
+		<sonar.projectKey>SpringBootAngularApp</sonar.projectKey>
+
 		<!-- Dependencies versions -->
 		<spring-boot.version>2.5.3</spring-boot.version>
 		<spring-aspects.version>5.3.9</spring-aspects.version>
