@@ -1,6 +1,40 @@
 {
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:base"
   ],
-  "baseBranches": ["develop"]
+  "baseBranches": ["develop"],
+  "packageRules": [
+    {
+      "packageNames": [
+        "@angular-devkit/core",
+        "@angular-devkit/build-angular",
+        "@angular/animations",
+        "@angular/cli",
+        "@angular/cdk",
+        "@angular/common",
+        "@angular/compiler",
+        "@angular/compiler-cli",
+        "@angular/core",
+        "@angular/forms",
+        "@angular/language-service",
+        "@angular/localize",
+        "@angular/material",
+        "@angular/platform-browser",
+        "@angular/platform-browser-dynamic",
+        "@angular/platform-server",
+        "@angular/router"
+      ],
+      "groupName": "angular packages"
+    },
+    {
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchCurrentVersion": "!/^0/",
+      "automerge": true
+    }
+  ],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true
+  }
 }
