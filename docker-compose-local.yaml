@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+
+  # The backend app
+  backend-users-api:
+    build:
+      context: ./back-end/users/users-api
+    ports:
+      - "8081:8081"
+    deploy :
+      resources:
+        limits:
+          memory: 350M
+    networks:
+      - my-network
+    restart: always
+
+  # The frontend app
+  frontend:
+    build:
+      context: ./front-end
+    ports:
+      - "4200:80"
+    deploy :
+      resources:
+        limits:
+          memory: 350M
+    networks:
+      - my-network
+    restart: always
+    depends_on:
+      - "back-end"
+
+networks:
+  my-network :
+    name: my-custom-network

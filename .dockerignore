@@ -1,0 +1,22 @@
+# Ignore everything by default
+*
+
+# Allow files and directories
+!/back-end
+!/front-end
+
+# Ignore unnecessary files inside allowed directories (this should go after the allowed files and directories)
+**/*~
+**/*.iml
+
+## Ignore unnecessary files inside backend app
+/back-end/*
+!/back-end/src/
+!/back-end/pom.xml
+!/back-end/.mvn/
+!/back-end/mvnw
+
+## Ignore unnecessary files inside frontend app
+/front-end/*.iml
+/front-end/dist/
+/front-end/node_modules/

@@ -12,9 +12,9 @@ mvn -N io.takari:maven:wrapper -Dmaven=3.8.1
 ./mvnw clean install
 ```
 
-# To start the app
+# To start users micro-service app
 ```
-./mvnw spring-boot:run
+./mvnw -f ./users/users-api/ spring-boot:run
 ```
 
-** The server is listening on : http://localhost:8080/
+** The server is listening on : http://localhost:8081/

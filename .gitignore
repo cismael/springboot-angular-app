@@ -3,21 +3,22 @@
 # IDEs and editors
 .idea
 *.iws
-*.iml
+/*.iml
 /*/*.iml
-*.ipr
-*.project
-*.settings
-.settings
-*generated
-.classpath
-.apt_generated
-.factorypath
-.springBeans
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
+/*/*/*.iml
+/back-end/*.ipr
+/back-end/*.project
+/back-end/*.settings
+/back-end/.settings
+/back-end/*generated
+/back-end/.classpath
+/back-end/.apt_generated
+/back-end/.factorypath
+/back-end/.springBeans
+/back-end/.c9/
+/back-end/*.launch
+/back-end/.settings/
+/back-end/*.sublime-workspace
 
 # IDE - VSCode
 .vscode/*
@@ -27,7 +28,7 @@
 !.vscode/extensions.json
 
 # compiled output
-/dist
+/front-end/dist
 /dist-server
 /tmp
 /out-tsc
