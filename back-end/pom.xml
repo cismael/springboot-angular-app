@@ -22,13 +22,13 @@
 
 		<maven.compiler.realase>11</maven.compiler.realase>
 		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-		<openapi-generator-maven-plugin.version>5.2.0</openapi-generator-maven-plugin.version>
+		<openapi-generator-maven-plugin.version>5.2.1</openapi-generator-maven-plugin.version>
 
 		<!-- SonarQube -->
 		<sonar.projectKey>SpringBootAngularApp</sonar.projectKey>
 
 		<!-- Dependencies versions -->
-		<spring-boot.version>2.5.3</spring-boot.version>
+		<spring-boot.version>2.5.4</spring-boot.version>
 		<spring-aspects.version>5.3.9</spring-aspects.version>
 		<spring-context-support.version.version>5.9.3</spring-context-support.version.version>
 
