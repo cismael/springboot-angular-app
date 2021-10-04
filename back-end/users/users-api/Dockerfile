@@ -1,4 +1,4 @@
-FROM amazoncorretto:16.0.2-alpine
+FROM amazoncorretto:17.0.0-alpine
 
 COPY target/users-api-*.jar /app/users-api.jar
 
