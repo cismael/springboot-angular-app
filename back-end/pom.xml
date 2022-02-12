@@ -21,20 +21,20 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<maven.compiler.realase>11</maven.compiler.realase>
-		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-		<openapi-generator-maven-plugin.version>5.3.1</openapi-generator-maven-plugin.version>
+		<maven-compiler-plugin.version>3.9.0</maven-compiler-plugin.version>
+		<openapi-generator-maven-plugin.version>5.4.0</openapi-generator-maven-plugin.version>
 
 		<!-- SonarQube -->
 		<sonar.projectKey>SpringBootAngularApp</sonar.projectKey>
 
 		<!-- Dependencies versions -->
-		<spring-boot.version>2.6.2</spring-boot.version>
-		<spring-aspects.version>5.3.14</spring-aspects.version>
+		<spring-boot.version>2.6.3</spring-boot.version>
+		<spring-aspects.version>5.3.15</spring-aspects.version>
 		<spring-context-support.version.version>5.9.3</spring-context-support.version.version>
 
-		<aspectj.version>1.9.7</aspectj.version>
+		<aspectj.version>1.9.8</aspectj.version>
 		<lombok.version>1.18.22</lombok.version>
-		<swagger-annotations.version>1.6.4</swagger-annotations.version>
+		<swagger-annotations.version>1.6.5</swagger-annotations.version>
 		<jackson-databind-nullable.version>0.2.2</jackson-databind-nullable.version>
 	</properties>
 
