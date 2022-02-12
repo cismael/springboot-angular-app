@@ -3,9 +3,7 @@
 # IDEs and editors
 .idea
 *.iws
-/*.iml
-/*/*.iml
-/*/*/*.iml
+*.iml
 /back-end/*.ipr
 /back-end/*.project
 /back-end/*.settings

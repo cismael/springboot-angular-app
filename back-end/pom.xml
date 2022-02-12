@@ -22,7 +22,7 @@
 
 		<maven.compiler.realase>11</maven.compiler.realase>
 		<maven-compiler-plugin.version>3.10.0</maven-compiler-plugin.version>
-		<openapi-generator-maven-plugin.version>5.4.0</openapi-generator-maven-plugin.version>
+		<openapi-generator-maven-plugin.version>5.2.0</openapi-generator-maven-plugin.version>
 
 		<!-- SonarQube -->
 		<sonar.projectKey>SpringBootAngularApp</sonar.projectKey>
@@ -34,8 +34,8 @@
 
 		<aspectj.version>1.9.8</aspectj.version>
 		<lombok.version>1.18.22</lombok.version>
-		<swagger-annotations.version>1.6.5</swagger-annotations.version>
-		<jackson-databind-nullable.version>0.2.2</jackson-databind-nullable.version>
+		<swagger-annotations.version>1.6.2</swagger-annotations.version>
+		<jackson-databind-nullable.version>0.2.1</jackson-databind-nullable.version>
 	</properties>
 
 	<dependencyManagement>
