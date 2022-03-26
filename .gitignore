@@ -3,9 +3,7 @@
 # IDEs and editors
 .idea
 *.iws
-/*.iml
-/*/*.iml
-/*/*/*.iml
+*.iml
 /back-end/*.ipr
 /back-end/*.project
 /back-end/*.settings
@@ -37,6 +35,7 @@
 /front-end/node_modules/
 /front-end/.pnp
 /front-end/.pnp.js
+/front-end/.angular
 
 # misc
 /.sass-cache
