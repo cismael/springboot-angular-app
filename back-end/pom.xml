@@ -34,7 +34,7 @@
 
 		<aspectj.version>1.9.9</aspectj.version>
 		<lombok.version>1.18.22</lombok.version>
-		<swagger-annotations.version>1.6.4</swagger-annotations.version>
+		<swagger-annotations.version>1.6.5</swagger-annotations.version>
 		<jackson-databind-nullable.version>0.2.1</jackson-databind-nullable.version>
 	</properties>
 
