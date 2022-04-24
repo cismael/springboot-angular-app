@@ -17,10 +17,14 @@
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
+		<!-- JAVA VERSION -->
+		<java.version>17</java.version>
+		<maven.compiler.realase>${java.version}</maven.compiler.realase>
+
+		<!-- Encoding -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<maven.compiler.realase>11</maven.compiler.realase>
 		<maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
 		<openapi-generator-maven-plugin.version>5.2.0</openapi-generator-maven-plugin.version>
 
@@ -133,8 +137,9 @@
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>${maven-compiler-plugin.version}</version>
 					<configuration>
-						<source>11</source>
-						<target>11</target>
+						<release>${java.version}</release>
+						<source>${java.version}</source>
+						<target>${java.version}</target>
 					</configuration>
 				</plugin>
 
