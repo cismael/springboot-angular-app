@@ -1,3 +1,3 @@
-FROM nginx:1.21.6-alpine
+FROM nginx:1.21-alpine
 
 COPY dist/springboot-angular-app-frontend /usr/share/nginx/html
