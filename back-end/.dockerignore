@@ -1,0 +1,6 @@
+*
+!open-api-specs/
+!users/
+!pom.xml
+!lombok.config
+#!target/

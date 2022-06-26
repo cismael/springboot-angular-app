@@ -1,0 +1,7 @@
+*
+!src/
+!.angular.json
+!package.json
+!package-lock.json
+!tsconfig.base.json
+!node_modules/

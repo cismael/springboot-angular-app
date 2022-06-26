@@ -19,7 +19,8 @@
 	<properties>
 		<!-- JAVA VERSION -->
 		<java.version>17</java.version>
-		<maven.compiler.realase>${java.version}</maven.compiler.realase>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
 
 		<!-- Encoding -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -137,7 +138,6 @@
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>${maven-compiler-plugin.version}</version>
 					<configuration>
-						<release>${java.version}</release>
 						<source>${java.version}</source>
 						<target>${java.version}</target>
 					</configuration>

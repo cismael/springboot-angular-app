@@ -5,8 +5,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "startOpen": "ng serve --o",
-    "build": "ng build --prod",
+    "start:open": "ng serve --o",
+    "build": "ng build --configuration production",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -43,7 +43,7 @@
     "@types/jasmine": "4.0.3",
     "@types/jasminewd2": "2.0.10",
     "@types/node": "16.11.41",
-    "codelyzer": "6.0.2",
+    "codelyzer": "^0.0.28",
     "jasmine-core": "4.2.0",
     "jasmine-spec-reporter": "7.0.0",
     "karma": "6.4.0",

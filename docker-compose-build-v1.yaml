@@ -5,7 +5,8 @@ services:
   # The backend app
   backend-users-api:
     build:
-      context: ./back-end/users/users-api
+      context: ./back-end
+      dockerfile: Dockerfile-build
     ports:
       - "8081:8081"
     deploy:
@@ -18,6 +19,7 @@ services:
   frontend:
     build:
       context: ./front-end
+      dockerfile: front-end/Dockerfile-build-v1
     ports:
       - "4200:80"
     deploy:
