@@ -1,16 +1,16 @@
 ### STAGE 1: Build ###
 FROM maven:3.8-amazoncorretto-17 AS build
 
-ADD . /app/
-
 WORKDIR /app
+
+COPY . /app/
 
 RUN mvn clean install
 
 ### STAGE 2: Run ###
 FROM amazoncorretto:17-alpine
 
-COPY --from=build /app/users-api.jar /app/users-api.jar
+COPY --from=build /app/users/users-api/target/users-api-*.jar /app/users-api.jar
 
 EXPOSE 8081
 

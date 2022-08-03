@@ -19,7 +19,8 @@
 	<properties>
 		<!-- JAVA VERSION -->
 		<java.version>17</java.version>
-		<maven.compiler.realase>${java.version}</maven.compiler.realase>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
 
 		<!-- Encoding -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -32,14 +33,14 @@
 		<sonar.projectKey>SpringBootAngularApp</sonar.projectKey>
 
 		<!-- Dependencies versions -->
-		<spring-boot.version>2.7.0</spring-boot.version>
-		<spring-aspects.version>5.3.21</spring-aspects.version>
+		<spring-boot.version>2.7.2</spring-boot.version>
+		<spring-aspects.version>5.3.22</spring-aspects.version>
 		<spring-context-support.version.version>5.9.3</spring-context-support.version.version>
 
 		<aspectj.version>1.9.9.1</aspectj.version>
 		<lombok.version>1.18.24</lombok.version>
 		<swagger-annotations.version>1.6.6</swagger-annotations.version>
-		<jackson-databind-nullable.version>0.2.2</jackson-databind-nullable.version>
+		<jackson-databind-nullable.version>0.2.3</jackson-databind-nullable.version>
 	</properties>
 
 	<dependencyManagement>
@@ -137,7 +138,6 @@
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>${maven-compiler-plugin.version}</version>
 					<configuration>
-						<release>${java.version}</release>
 						<source>${java.version}</source>
 						<target>${java.version}</target>
 					</configuration>
