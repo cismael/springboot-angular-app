@@ -1,13 +1,13 @@
 ### STAGE 1: Build ###
-FROM node:18-alpine AS build
+FROM node:18-alpine
 
 WORKDIR /app
 
-COPY . /app/
+COPY src/ /app/src/
+COPY package*.json  /app/
+COPY tsconfig*.json  /app/
 
-RUN npm run build
+RUN npm install -g @angular/cli && \
+    npm ci
 
-### STAGE 2: Run ###
-FROM nginx:1.23-alpine
-
-COPY --from=build /app/dist/springboot-angular-app-frontend /usr/share/nginx/html
+ENTRYPOINT npm run start
