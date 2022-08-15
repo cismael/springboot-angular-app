@@ -1,5 +1,5 @@
 ### STAGE 1: Build ###
-FROM maven:3.8-amazoncorretto-17 AS build
+FROM maven:3.8-amazoncorretto-17 AS builder
 
 WORKDIR /app
 
@@ -10,8 +10,12 @@ RUN mvn clean install
 ### STAGE 2: Run ###
 FROM amazoncorretto:17-alpine
 
-COPY --from=build /app/users/users-api/target/users-api-*.jar /app/users-api.jar
+MAINTAINER cismael
+
+COPY --from=builder /app/users/users-api/target/users-api-*.jar /app/users-api.jar
 
 EXPOSE 8081
+
+USER 1000
 
 CMD java -jar /app/users-api.jar

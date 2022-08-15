@@ -1,6 +1,8 @@
 ### STAGE 1: Build ###
 FROM node:18-alpine
 
+MAINTAINER cismael
+
 WORKDIR /app
 
 COPY src/ /app/src/
@@ -9,5 +11,7 @@ COPY tsconfig*.json  /app/
 
 RUN npm install -g @angular/cli && \
     npm ci
+
+USER 1000
 
 ENTRYPOINT npm run start
