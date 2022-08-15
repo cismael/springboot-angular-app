@@ -2,15 +2,16 @@
 	"version": 1,
 	"collections": [
 		{
-			"id": "896b5e96-0eda-438a-82d8-feb8df1634a8",
-			"uid": "0-896b5e96-0eda-438a-82d8-feb8df1634a8",
+			"id": "ebf04116-787f-41fa-84d8-3665d0c597ff",
+			"uid": "0-ebf04116-787f-41fa-84d8-3665d0c597ff",
 			"name": "SpringBootAngularApp",
 			"description": null,
 			"auth": null,
 			"events": null,
 			"variables": [],
 			"order": [
-				"d872cc66-c04b-4641-b00a-08121121dbd4"
+				"17471b81-07f0-4e82-b88d-42d8c70b50da",
+				"bf755897-677e-47e2-9571-0a1120d9910a"
 			],
 			"folders_order": [],
 			"protocolProfileBehavior": {},
@@ -18,10 +19,33 @@
 			"folders": [],
 			"requests": [
 				{
-					"id": "d872cc66-c04b-4641-b00a-08121121dbd4",
-					"uid": "0-d872cc66-c04b-4641-b00a-08121121dbd4",
-					"name": "Get Users",
-					"url": "http://localhost:8080/users",
+					"id": "17471b81-07f0-4e82-b88d-42d8c70b50da",
+					"uid": "0-17471b81-07f0-4e82-b88d-42d8c70b50da",
+					"name": "Users list",
+					"url": "http://localhost:8081/api/users",
+					"description": null,
+					"data": null,
+					"dataOptions": null,
+					"dataMode": null,
+					"headerData": [],
+					"method": "GET",
+					"pathVariableData": [],
+					"queryParams": [],
+					"auth": null,
+					"events": null,
+					"folder": null,
+					"responses_order": [],
+					"currentHelper": null,
+					"helperAttributes": null,
+					"collectionId": "ebf04116-787f-41fa-84d8-3665d0c597ff",
+					"headers": "",
+					"pathVariables": {}
+				},
+				{
+					"id": "bf755897-677e-47e2-9571-0a1120d9910a",
+					"uid": "0-bf755897-677e-47e2-9571-0a1120d9910a",
+					"name": "Health Check",
+					"url": "localhost:8081/actuator/health",
 					"description": null,
 					"data": null,
 					"dataOptions": null,
@@ -36,7 +60,7 @@
 					"responses_order": [],
 					"currentHelper": null,
 					"helperAttributes": null,
-					"collectionId": "896b5e96-0eda-438a-82d8-feb8df1634a8",
+					"collectionId": "ebf04116-787f-41fa-84d8-3665d0c597ff",
 					"pathVariables": {}
 				}
 			]
@@ -44,7 +68,12 @@
 	],
 	"environments": [
 		{
-			"id": "9ed346bf-6e63-4f1b-bba9-3bb1a5a5d586",
+			"id": "1913c0b6-f5c0-49b3-93de-6103da9243b4",
+			"name": "My Workspace - globals",
+			"values": []
+		},
+		{
+			"id": "2f387761-d8e9-4f79-b959-820cae77b304",
 			"name": "My Workspace - globals",
 			"values": []
 		}

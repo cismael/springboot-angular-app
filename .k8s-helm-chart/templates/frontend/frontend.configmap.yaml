@@ -1,0 +1,41 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  namespace: {{ .Values.namespace }}
+  name: {{ .Chart.Name }}-{{ .Values.frontend.name }}-configmap
+  labels:
+    app: {{ .Chart.Name }}-{{ .Values.frontend.name }}
+    {{- include "springboot-angular-app.labels" . | nindent 4 }}
+data:
+  default.conf: |
+    server {
+      listen       80;
+      server_name  {{ .Chart.Name }}.{{ .Values.ingress.domainName }}; # URL du ingress
+
+      location /healthz {
+          access_log off;
+          return 200 "healthy\n";
+      }
+
+      location / {
+          root   /usr/share/nginx/html;
+          index  index.html index.htm;
+
+          try_files $uri $uri/ /index.html;
+      }
+
+      # configuration du proxy api
+      location /api {
+          proxy_pass      https://{{ .Chart.Name }}.{{ .Values.ingress.domainName }}/api$request_uri;
+          proxy_set_header    X-Accel-Buffering  'no';
+      }
+
+      #error_page  404              /404.html;
+
+      # redirect server error pages to the static page /50x.html
+      #
+      error_page   500 502 503 504  /50x.html;
+      location = /50x.html {
+          root   /usr/share/nginx/html;
+      }
+    }

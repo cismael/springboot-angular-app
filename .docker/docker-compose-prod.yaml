@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+
+  # The backend app
+  backend-users-api:
+    container_name: backend-users-api-prod
+    image: cismael/springbootangularapp_back-end
+    ports:
+      - "8081:8081"
+    deploy:
+      resources:
+        reservations:
+          cpus: "0.01"
+          memory: 128M
+        limits:
+          cpus: "0.1"
+          memory: 512M
+    restart: always
+
+  # The frontend app
+  frontend:
+    container_name: frontend-prod
+    image: cismael/springbootangularapp_front-end
+    ports:
+      - "4200:80"
+    deploy:
+      resources:
+        reservations:
+          cpus: "0.01"
+          memory: 128M
+        limits:
+          cpus: "0.1"
+          memory: 512M
+    restart: always
+    depends_on:
+      - "backend-users-api"

@@ -8,26 +8,27 @@ import { throwError as observableThrowError, Observable, of } from 'rxjs';
 // Angular HTTP default options
 const httpOptions = { headers: new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'}) };
 
-import { User } from "./user";
-import { IUserResponse } from "./user-response-interface";
+import { User } from './user';
+import { IUserResponse } from './user-response-interface';
+import {environment} from '../../environments/environment';
 
 
 @Injectable()
 export class UserService {
 
-  private apiRoot = 'http://localhost:8081';
+  private apiRoot = environment.apiRootUrl;
 
   constructor(private http: HttpClient) { }
 
   findAll(): Observable<IUserResponse[]>  {
-    let apiURL = `${this.apiRoot}/users`;
-    return this.http.get<IUserResponse[]>(apiURL, httpOptions)
+    const apiRootUrl = `${this.apiRoot}/users`;
+    return this.http.get<IUserResponse[]>(apiRootUrl, httpOptions)
       .pipe(
         tap((usersResponse: IUserResponse[]) => {
             console.log('response message : ' + JSON.stringify(usersResponse));
           }),
         catchError(this.handleError<IUserResponse[]>('gelAllUsers'))
-      )
+      );
   }
 
   findById(id: number): Observable<User> {

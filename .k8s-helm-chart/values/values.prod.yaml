@@ -1,0 +1,189 @@
+# Default values for helm.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# Namespace
+namespace: springboot-angular-app
+
+# Variable d'environnement par défaut pour le tir de charge
+environnementExecution: "LOCAL"
+mockPaiementCarte: "'true'" # k8s n'aime pas qu'on mette un booléen en valeur d'une valeur d'environnement, on met le double et le simple quote
+mockMaterialisation: "'true'" # k8s n'aime pas qu'on mette un booléen en valeur d'une valeur d'environnement, on met le double et le simple quote
+profile: "debug"
+
+# ReplicaCount
+replicaCount: 1
+
+image:
+    repository: all-docker.artifact.cloud.socrate.vsct.fr
+
+### Ingress
+ingress:
+  domainName: paris.ritmx-dev.aws.vsct.fr
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80},{"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/ssl-redirect: '443'
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:eu-west-3:750343639269:certificate/b64086a6-bd7a-4aac-8ef7-61a1d5abd488
+    alb.ingress.kubernetes.io/security-groups: k8s-albSecurityGroup
+    alb.ingress.kubernetes.io/group.name: mpd # mutualisation des ALB du namespace @see https://it4container.gitlab.cloud.socrate.vsct.fr/doc_client/aws/app-exposition/#mutualisation-dun-alb-pour-gerer-plusieurs-ingress
+    alb.ingress.kubernetes.io/healthcheck-path: /health # paramètre de la ligne de vie ALB @see https://kubernetes-sigs.github.io/aws-load-balancer-controller/guide/ingress/annotations/#health-check
+
+# Security Context at pod level
+podSecurityContext:
+  runAsNonRoot: true
+  runAsUser: 1001
+  runAsGroup: 3000
+  fsGroup: 2000
+  fsGroupChangePolicy: "OnRootMismatch"
+
+# Security Context at container level
+securityContext:
+  privileged: false
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+  capabilities:
+    drop:
+    - all
+
+### Values for InfluxDB
+influxdb:
+  name: "influxdb"
+  goMaxProcs: 3
+  image:
+    pullPolicy: IfNotPresent
+    volumeMounts:
+      mappingsPath:
+        data: "/var/lib/influxdb/"
+        influxdbInit: "/docker-entrypoint-initdb.d/influxdb-init.iql"
+
+    # Resources
+    resources: # cf. https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+      requests:
+        cpu: "3"
+        memory: "6Gi"
+      limits:
+        cpu: "3"
+        memory: "6Gi"
+
+  # Liveness Probe
+  livenessProbe:
+    tcpSocket:
+      port: 8086
+    initialDelaySeconds: 10
+    timeoutSeconds: 2
+    periodSeconds: 30
+
+  # Readiness Probe
+  readinessProbe:
+    httpGet:
+      path: /ping
+      port: 8086
+      scheme: HTTP
+    initialDelaySeconds: 10
+    timeoutSeconds: 2
+    periodSeconds: 30
+
+  ### Service
+  service:
+    type: NodePort
+    port: 8086
+
+  ### Config Map
+  configmap:
+    mappingsPath:
+      influxdbInit: "resources/influxdb-init.iql" # répertoire où se situe le(s) script(s) d'init à positionner dans le volume du POD
+
+  ### Persistence
+  persistentVolumeClaim:
+    enabled: true
+    filesystemId: fs-9a562e2b
+    accessPointId: fsap-0fe64e08584c9ff14
+    subpath: "/mpd_tdc_app"
+
+### Values for Grafana
+grafana:
+  name: "grafana"
+  image:
+    pullPolicy: IfNotPresent
+    volumeMounts:
+      mappingsPath:
+        data: "/var/lib/grafana/"
+        provisioning: "/etc/grafana/provisioning/"
+
+    # Resources
+    resources: # cf. https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+      requests:
+        cpu: "2"
+        memory: "2Gi"
+      limits:
+        cpu: "2"
+        memory: "2Gi"
+
+  # Liveness Probe
+  livenessProbe:
+    tcpSocket:
+      port: 3000
+    initialDelaySeconds: 10
+    timeoutSeconds: 2
+    periodSeconds: 30
+
+  # Readiness Probe
+  readinessProbe:
+    httpGet:
+      path: /api/health
+      port: 3000
+      scheme: HTTP
+    initialDelaySeconds: 10
+    timeoutSeconds: 2
+    periodSeconds: 30
+
+  ### Service
+  service:
+    type: NodePort
+    port: 80
+
+  configmap:
+    mappingsPath:
+      # répertoire où se situe le(s) dashboard(s) et le(s) datasource(s) du TDC à positionner dans le volume du POD
+      rootFolder: "resources/grafana"
+      provisioningFolder: "resources/grafana/provisioning/**"
+
+### Values for K6
+k6:
+  name: "k6"
+  image:
+    repository: all-docker.artifact.cloud.socrate.vsct.fr
+    pullPolicy: IfNotPresent
+    volumeMounts:
+      mappingsPath:
+        k6Scripts: "/k6-scripts/"
+
+    initContainers:
+      # Resources
+      resources:
+        requests:
+          cpu: "1"
+          memory: "1Gi"
+        limits:
+          cpu: "1"
+          memory: "1Gi"
+    # Resources
+    resources: # cf. https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+      requests:
+        cpu: "2"
+        memory: "3Gi"
+      limits:
+        cpu: "2"
+        memory: "3Gi"
+
+  ### Service
+  service:
+    type: NodePort
+    port: 6565
+
+  ### Config Map
+  configmap:
+    mappingsPath:
+      # répertoires où se situe les scripts du TDC à positionner dans le volume du POD
+      k6Scripts: "resources/k6/k6-scripts/**"
