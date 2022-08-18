@@ -33,7 +33,7 @@
 		<sonar.projectKey>SpringBootAngularApp</sonar.projectKey>
 
 		<!-- Dependencies versions -->
-		<spring-boot.version>2.7.2</spring-boot.version>
+		<spring-boot.version>2.7.3</spring-boot.version>
 		<spring-aspects.version>5.3.22</spring-aspects.version>
 		<spring-context-support.version.version>5.9.3</spring-context-support.version.version>
 
