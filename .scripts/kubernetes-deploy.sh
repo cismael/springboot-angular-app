@@ -10,4 +10,4 @@ cd ..
 kubectl create namespace springboot-angular-app
 
 # deploy through helm
-helm upgrade --install myapp ./.k8s-helm-chart/ -f ./.k8s-helm-chart/values/values.dev.yaml
+helm upgrade --install myapp ./.k8s/helm-chart/ -f ./.k8s/helm-chart/values/values.dev.yaml
