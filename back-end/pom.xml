@@ -40,7 +40,7 @@
 		<aspectj.version>1.9.19</aspectj.version>
 		<lombok.version>1.18.24</lombok.version>
 		<swagger-annotations.version>1.6.8</swagger-annotations.version>
-		<swagger-annotations-core-v3.version>2.2.0</swagger-annotations-core-v3.version>
+		<swagger-annotations-core-v3.version>2.2.7</swagger-annotations-core-v3.version>
 		<jackson-bom.version>2.14.1</jackson-bom.version>
 		<jackson-databind-nullable.version>0.2.4</jackson-databind-nullable.version>
 	</properties>
