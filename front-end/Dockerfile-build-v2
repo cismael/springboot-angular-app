@@ -10,7 +10,7 @@ COPY package*.json  /app/
 COPY tsconfig*.json  /app/
 
 RUN npm install -g @angular/cli && \
-    npm ci
+    npm ci --only=production
 
 USER 1000
 

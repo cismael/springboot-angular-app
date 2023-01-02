@@ -1,0 +1,16 @@
+kind: Service
+apiVersion: v1
+metadata:
+  namespace: {{ .Values.namespace }}
+  name: {{ .Chart.Name }}-{{ .Values.frontend.name }}-service
+  labels:
+    {{- include "springboot-angular-app.labels" . | nindent 4 }}
+spec:
+  selector:
+    {{- include "springboot-angular-app.labels" . | nindent 4 }}
+  type: {{ .Values.frontend.service.type }}
+  ports:
+    - name: port-http-{{ .Values.frontend.name }}
+      protocol: TCP
+      port: {{ .Values.frontend.service.port }}
+      targetPort: {{ .Values.frontend.service.targetPort }}
