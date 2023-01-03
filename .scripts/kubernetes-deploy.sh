@@ -7,6 +7,9 @@
 SCRIPT_DIR="$(dirname $(realpath $0))"
 cd $SCRIPT_DIR
 
+# then go to the root folder (parent folder)
+cd ..
+
 # kubernetes namespace
 NAMESPACE="springboot-angular-app"
 
@@ -15,9 +18,6 @@ HELM_CHART_DIR=".k8s/helm-chart"
 
 # create the namespace
 kubectl create namespace $NAMESPACE
-
-# go to the root folder (parent folder)
-cd ..
 
 # deploy with helm
 helm upgrade --install springboot-angular-app $HELM_CHART_DIR --values $HELM_CHART_DIR/values/values.dev.yaml -n $NAMESPACE

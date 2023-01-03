@@ -5,9 +5,6 @@
 # Namespace
 namespace: springboot-angular-app
 
-# ReplicaCount
-replicaCount: 1
-
 image:
   registry: "cismael" # registry on dockerhub
 
@@ -36,9 +33,8 @@ frontend:
       limits:
         cpu: "0.5"
         memory: "256Mi"
-  configmap:
-    mappingPath:
-      nginx: "resources/nginx/**"
+  # ReplicaCount
+  replicaCount: 2
   # Security Context at pod level
   podSecurityContext:
     runAsUser: 0
@@ -96,6 +92,8 @@ backend:
       limits:
         cpu: "0.5"
         memory: "512Gi"
+  # ReplicaCount
+  replicaCount: 1
   # Security Context at pod level
   podSecurityContext:
     runAsNonRoot: true
