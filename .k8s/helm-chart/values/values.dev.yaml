@@ -34,7 +34,7 @@ frontend:
         cpu: "0.5"
         memory: "256Mi"
   # ReplicaCount
-  replicaCount: 2
+  replicaCount: 5
   # Security Context at pod level
   podSecurityContext:
     runAsUser: 0
