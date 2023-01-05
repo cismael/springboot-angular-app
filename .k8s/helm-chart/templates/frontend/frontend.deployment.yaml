@@ -1,0 +1,47 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  namespace: {{ .Values.namespace }}
+  name: {{ .Chart.Name }}-{{ .Values.frontend.name }}-deployment
+  labels:
+    app: {{ .Chart.Name }}-{{ .Values.frontend.name }}
+    {{- include "springboot-angular-app.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.frontend.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Chart.Name }}-{{ .Values.frontend.name }}
+      {{- include "springboot-angular-app.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Chart.Name }}-{{ .Values.frontend.name }}
+        {{- include "springboot-angular-app.labels" . | nindent 8 }}
+    spec:
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Values.frontend.name }}
+          securityContext:
+            {{- toYaml .Values.frontend.securityContext | nindent 12 }}
+          image: "{{ .Values.image.registry }}/{{ .Values.frontend.image.name }}:{{ .Values.frontend.image.tag }}"
+          imagePullPolicy: {{ .Values.frontend.image.pullPolicy }}
+          ports:
+            - name: {{ .Values.frontend.service.targetPort }}
+              containerPort: {{ .Values.frontend.service.port }}
+              protocol: TCP
+          livenessProbe:
+            {{- toYaml .Values.frontend.livenessProbe | nindent 12 }}
+          readinessProbe:
+            {{- toYaml .Values.frontend.readinessProbe | nindent 12 }}
+          resources:
+            {{- toYaml .Values.frontend.image.resources | nindent 12 }}
+          volumeMounts:
+            - name: nginx-config
+              mountPath: /etc/nginx/conf.d
+
+      # Volumes
+      volumes:
+      - name: nginx-config
+        configMap:
+          name: {{ .Chart.Name }}-{{ .Values.frontend.name }}-configmap

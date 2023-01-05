@@ -39,6 +39,10 @@
             <artifactId>swagger-annotations</artifactId>
         </dependency>
         <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-annotations</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.openapitools</groupId>
             <artifactId>jackson-databind-nullable</artifactId>
         </dependency>
@@ -64,12 +68,21 @@
                             <inputSpec>${openapi.users.uri}</inputSpec>
                             <modelPackage>com.springboot.angular.app.openapi.model</modelPackage>
                             <configOptions>
+                                <dateLibrary>java8</dateLibrary>
                                 <serializableModel>true</serializableModel>
                                 <booleanGetterPrefix>is</booleanGetterPrefix>
                             </configOptions>
                             <typeMappings>
                                 <typeMapping>Boolean=boolean</typeMapping>
                             </typeMappings>
+                            <generatorName>spring</generatorName>
+                            <generateModels>true</generateModels>
+                            <generateModelTests>false</generateModelTests>
+                            <generateModelDocumentation>false</generateModelDocumentation>
+                            <generateApis>false</generateApis>
+                            <generateApiTests>false</generateApiTests>
+                            <generateApiDocumentation>false</generateApiDocumentation>
+                            <generateSupportingFiles>false</generateSupportingFiles>
                         </configuration>
                     </execution>
                 </executions>
