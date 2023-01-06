@@ -2,7 +2,7 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   namespace: {{ .Values.namespace }}
-  name: {{ .Chart.Name }}-{{ .Values.frontend.name }}-configmap
+  name: {{ .Values.platform }}-{{ .Chart.Name }}-{{ .Values.frontend.name }}-configmap
   labels:
     app: {{ .Chart.Name }}-{{ .Values.frontend.name }}
     {{- include "springboot-angular-app.labels" . | nindent 4 }}
@@ -11,7 +11,7 @@ data:
     server {
           listen       80;
           # URL du ingress
-          server_name {{ .Chart.Name }}.{{ .Values.ingress.domainName }};
+          server_name {{ .Values.platform }}-{{ .Chart.Name }}.{{ .Values.ingress.domainName }};
 
           location /healthz {
               access_log off;
@@ -27,7 +27,7 @@ data:
 
           # configuration du proxy api
           location /api {
-              proxy_pass  https://{{ .Chart.Name }}.{{ .Values.ingress.domainName }}/api$request_uri;
+              proxy_pass  https://{{ .Values.platform }}-{{ .Chart.Name }}.{{ .Values.ingress.domainName }}/api$request_uri;
 
               proxy_set_header    X-Accel-Buffering  'no';
           }

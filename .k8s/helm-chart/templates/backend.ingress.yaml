@@ -2,17 +2,17 @@ kind: Ingress
 apiVersion: networking.k8s.io/v1
 metadata:
   namespace: {{ .Values.namespace }}
-  name: {{ .Chart.Name }}-{{ .Values.backend.name }}-ingress
+  name: {{ .Values.platform }}-{{ .Chart.Name }}-{{ .Values.backend.name }}-ingress
   labels:
     {{- include "springboot-angular-app.labels" . | nindent 4 }}
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: {{ .Chart.Name }}.{{ .Values.ingress.domainName }}
+    external-dns.alpha.kubernetes.io/hostname: {{ .Values.platform }}-{{ .Chart.Name }}.{{ .Values.ingress.domainName }}
     {{ if .Values.ingress.annotations }}
     {{- toYaml .Values.ingress.annotations | nindent 4 }}
     {{ end }}
 spec:
   rules:
-    - host: {{ .Chart.Name }}.{{ .Values.ingress.domainName }}
+    - host: {{ .Values.platform }}-{{ .Chart.Name }}.{{ .Values.ingress.domainName }}
       http:
         paths:
           # frontend
@@ -20,7 +20,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: {{ .Chart.Name }}-{{ .Values.frontend.name }}-service
+                name: {{ .Values.platform }}-{{ .Chart.Name }}-{{ .Values.frontend.name }}-service
                 port:
                   number: {{ .Values.frontend.service.port }}
           # backend
@@ -28,6 +28,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: {{ .Chart.Name }}-{{ .Values.backend.name }}-service
+                name: {{ .Values.platform }}-{{ .Chart.Name }}-{{ .Values.backend.name }}-service
                 port:
                   number: {{ .Values.backend.service.port }}

@@ -2,7 +2,7 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
   namespace: {{ .Values.namespace }}
-  name: {{ .Chart.Name }}-{{ .Values.frontend.name }}-deployment
+  name: {{ .Values.platform }}-{{ .Chart.Name }}-{{ .Values.frontend.name }}-deployment
   labels:
     app: {{ .Chart.Name }}-{{ .Values.frontend.name }}
     {{- include "springboot-angular-app.labels" . | nindent 4 }}
@@ -44,4 +44,4 @@ spec:
       volumes:
       - name: nginx-config
         configMap:
-          name: {{ .Chart.Name }}-{{ .Values.frontend.name }}-configmap
+          name: {{ .Values.platform }}-{{ .Chart.Name }}-{{ .Values.frontend.name }}-configmap

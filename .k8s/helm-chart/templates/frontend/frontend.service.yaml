@@ -2,7 +2,7 @@ kind: Service
 apiVersion: v1
 metadata:
   namespace: {{ .Values.namespace }}
-  name: {{ .Chart.Name }}-{{ .Values.frontend.name }}-service
+  name: {{ .Values.platform }}-{{ .Chart.Name }}-{{ .Values.frontend.name }}-service
   labels:
     {{- include "springboot-angular-app.labels" . | nindent 4 }}
 spec:
