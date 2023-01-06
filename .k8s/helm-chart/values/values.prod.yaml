@@ -3,7 +3,10 @@
 # Declare variables to be passed into your templates.
 
 # Namespace
-namespace: springboot-angular-app
+namespace: springboot-angular-app-prod
+
+# environment
+platform: prod
 
 image:
   registry: "cismael" # registry on dockerhub
@@ -11,12 +14,6 @@ image:
 ### Ingress
 ingress:
   domainName: cismael.com
-#  domainName: localhost
-  annotations:
-    kubernetes.io/ingress.class: alb
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80},{"HTTPS": 443}]'
-    alb.ingress.kubernetes.io/ssl-redirect: '443'
-    alb.ingress.kubernetes.io/healthcheck-path: /actuator/health # paramètre de la ligne de vie ALB @see https://kubernetes-sigs.github.io/aws-load-balancer-controller/guide/ingress/annotations/#health-check
 
 ### Values for frontend app
 frontend:
@@ -34,7 +31,7 @@ frontend:
         cpu: "0.5"
         memory: "256Mi"
   # ReplicaCount
-  replicaCount: 6
+  replicaCount: 3
   # Security Context at pod level
   podSecurityContext:
     runAsUser: 0

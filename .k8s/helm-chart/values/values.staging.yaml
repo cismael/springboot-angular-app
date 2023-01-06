@@ -6,7 +6,7 @@
 namespace: springboot-angular-app
 
 # environment
-platform: dev
+platform: staging
 
 image:
   registry: "cismael" # registry on dockerhub
@@ -31,7 +31,7 @@ frontend:
         cpu: "0.5"
         memory: "256Mi"
   # ReplicaCount
-  replicaCount: 1
+  replicaCount: 2
   # Security Context at pod level
   podSecurityContext:
     runAsUser: 0

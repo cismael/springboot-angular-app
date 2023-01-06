@@ -93,6 +93,4 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-flux-for-helm-users/
-
 /helm-package-output/
