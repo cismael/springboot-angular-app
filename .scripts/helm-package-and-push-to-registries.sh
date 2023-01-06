@@ -25,17 +25,18 @@ helm push ${HELM_PAKAGE_NAME} oci://registry-1.docker.io/${GIT_REPO_OWNER}
 
 # helm pull
 # helm pull oci://registry-1.docker.io/cismael/springboot-angular-app --version 0.1.0
+
 ################################################################################################################# Github
 # login to github container registry
 #docker login ghcr.io --username ${GIT_REPO_OWNER} --password-stdin
 #echo ${GITHUB_PAT} | docker login ghcr.io --username ${GIT_REPO_OWNER} --password-stdin
 
 # push the helm package to github oci registry
-helm push ${HELM_PAKAGE_NAME} oci://ghcr.io/${GIT_REPO_OWNER}/charts
+helm push ${HELM_PAKAGE_NAME} oci://ghcr.io/${GIT_REPO_OWNER}/helm-chart
 
 # helm pull
 # helm registry login -u ${GIT_REPO_OWNER} ghcr.io/${GIT_REPO_OWNER}
-# helm pull ghcr.io/${GIT_REPO_OWNER}/charts/springboot-angular-app-0.1.0
+# helm pull ghcr.io/${GIT_REPO_OWNER}/helm-charts/springboot-angular-app-0.1.0
 
 # delete generated helm package
 rm -rf ./helm-package-output
