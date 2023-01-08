@@ -1,3 +1,41 @@
+# Frontend
+
+## To install npm dependencies
+```bash
+$ npm install
+```
+
+## To build the app for dev
+```bash
+$ npm run build:dev
+```
+or :
+```bash
+$ ./.scripts/BUILD.sh
+```
+
+## To build the app for production
+```bash
+$ npm run build:prod
+```
+
+## To serve the app on localhost:4200
+```bash
+$ npm run build:dev
+```
+or: 
+```bash
+$ ./.scripts/START.sh
+```
+
+# To build and serve the app on localhost:4200
+```bash
+$ ./.scripts/BUILD-AND-START.sh
+```
+
+** The server is listening on : http://localhost:4200/
+
+
 # UserApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.7.

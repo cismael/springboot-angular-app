@@ -1,0 +1,135 @@
+# Default values for helm.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# Namespace
+namespace: prod-springboot-angular-app-prod
+
+# environment
+platform: prod
+
+image:
+  registry: "cismael" # registry on dockerhub
+
+### Ingress
+ingress:
+  domainName: cismael.com
+
+### Values for frontend app
+frontend:
+  name: "frontend"
+  image:
+    name: "springboot-angular-app-frontend"
+    tag: latest
+    pullPolicy: IfNotPresent
+    # Resources
+    resources:
+      requests:
+        cpu: "0.1"
+        memory: "128Mi"
+      limits:
+        cpu: "0.5"
+        memory: "256Mi"
+  # ReplicaCount
+  replicaCount: 3
+  # Security Context at pod level
+  podSecurityContext:
+    runAsUser: 0
+    fsGroup: 2000
+    fsGroupChangePolicy: "OnRootMismatch"
+  # Security Context at container level
+    capabilities:
+      drop:
+        - all
+  securityContext:
+    privileged: false
+    allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: false
+  # Liveness Probe
+  livenessProbe:
+    initialDelaySeconds: 15
+    timeoutSeconds: 3
+    periodSeconds: 15
+    successThreshold: 1
+    failureThreshold: 5
+    httpGet:
+      path: /
+      port: 80
+      scheme: HTTP
+  # Readiness Probe
+  readinessProbe:
+    initialDelaySeconds: 10
+    timeoutSeconds: 3
+    periodSeconds: 15
+    successThreshold: 1
+    failureThreshold: 3
+    httpGet:
+      path: /
+      port: 80
+      scheme: HTTP
+  ### Service
+  service:
+    type: NodePort
+    port: 80
+    targetPort: http-frontend
+
+
+### Values for backend app
+backend:
+  name: "backend"
+  image:
+    name: "springboot-angular-app-backend"
+    tag: latest
+    pullPolicy: IfNotPresent
+    # Resources
+    resources:
+      requests:
+        cpu: "0.1"
+        memory: "256Mi"
+      limits:
+        cpu: "0.5"
+        memory: "512Gi"
+  # ReplicaCount
+  replicaCount: 1
+  # Security Context at pod level
+  podSecurityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+    runAsGroup: 3000
+    fsGroup: 2000
+    fsGroupChangePolicy: "OnRootMismatch"
+  # Security Context at container level
+  securityContext:
+    capabilities:
+      drop:
+        - all
+    privileged: false
+    allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: false
+  # Liveness Probe
+  livenessProbe:
+    initialDelaySeconds: 120
+    timeoutSeconds: 3
+    periodSeconds: 15
+    successThreshold: 1
+    failureThreshold: 5
+    httpGet:
+      path: /actuator/health/liveness
+      port: 8081
+      scheme: HTTP
+  # Readiness Probe
+  readinessProbe:
+    initialDelaySeconds: 60
+    timeoutSeconds: 3
+    periodSeconds: 15
+    successThreshold: 1
+    failureThreshold: 5
+    httpGet:
+      path: /actuator/health/readiness
+      port: 8081
+      scheme: HTTP
+  ### Service
+  service:
+    type: NodePort
+    port: 8081
+    targetPort: http-backend

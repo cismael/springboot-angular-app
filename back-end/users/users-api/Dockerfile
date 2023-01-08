@@ -1,6 +1,9 @@
-FROM amazoncorretto:17-alpine
+FROM amazoncorretto:17.0.5-alpine
 
 MAINTAINER cismael
+
+# label to link the generated package from this Dockerfile to the github repository that containt the source code
+LABEL org.opencontainers.image.source https://github.com/cismael/springboot-angular-app
 
 WORKDIR /app
 
