@@ -20,7 +20,7 @@ function set_wrapped_maven_executor() {
 # Function to build the backend
 function build_backend() {
   # Cd to the backend folder
-  cd back-end || exit 1
+  cd ${BACKEND_FOLDER_NAME} || exit 1
 
   # Call the function that set the maven wrapped executor
   set_wrapped_maven_executor
@@ -36,7 +36,7 @@ function start_backend() {
 #  echo "===> 2 - $ROOT_FOLDER"
 #
 #  # Cd to the backend folder
-#  cd ${ROOT_FOLDER}/back-end || exit 1
+#  cd ${ROOT_FOLDER}/${BACKEND_FOLDER_NAME} || exit 1
 
   # Call the function that set the maven wrapped executor
   set_wrapped_maven_executor

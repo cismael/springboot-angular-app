@@ -12,4 +12,4 @@ cd ..
 
 ################################################################################################################ Backend
 # Cd to the backend folder and start it by calling the function
-cd back-end || exit 1 && start_backend
+cd ${BACKEND_FOLDER_NAME} || exit 1 && start_backend

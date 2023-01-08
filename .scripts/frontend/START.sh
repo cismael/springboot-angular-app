@@ -12,4 +12,4 @@ cd ..
 
 ############################################################################################################### Frontend
 # Cd to frontend folder and start it by calling the function
-cd front-end || exit 1 && npm run start:open
+cd ${FRONTEND_FOLDER_NAME} || exit 1 && npm run start:open

@@ -29,11 +29,11 @@ function ask_if_build_is_needed() {
     if [ "$1" == "${FRONTEND_FOLDER_NAME}" ]
       then
         # Cd to the frontend folder (so docker image can be build from the Dockerfile)
-        cd front-end || exit 1
+        cd ${FRONTEND_FOLDER_NAME} || exit 1
     elif [ "$1" == "${BACKEND_FOLDER_NAME}" ]
       then
         # Cd to the backend users-api folder (so docker image can be build from the Dockerfile)
-        cd back-end/users/users-api/ || exit 1
+        cd ${BACKEND_FOLDER_NAME}/users/users-api/ || exit 1
     fi
   fi
 }

@@ -4,19 +4,19 @@
 .idea
 *.iws
 *.iml
-/back-end/*.ipr
-/back-end/*.project
-/back-end/*.settings
-/back-end/.settings
-/back-end/*generated
-/back-end/.classpath
-/back-end/.apt_generated
-/back-end/.factorypath
-/back-end/.springBeans
-/back-end/.c9/
-/back-end/*.launch
-/back-end/.settings/
-/back-end/*.sublime-workspace
+/backend/*.ipr
+/backend/*.project
+/backend/*.settings
+/backend/.settings
+/backend/*generated
+/backend/.classpath
+/backend/.apt_generated
+/backend/.factorypath
+/backend/.springBeans
+/backend/.c9/
+/backend/*.launch
+/backend/.settings/
+/backend/*.sublime-workspace
 
 # IDE - VSCode
 .vscode/*
@@ -26,16 +26,16 @@
 !.vscode/extensions.json
 
 # compiled output
-/front-end/dist
+/frontend/dist
 /dist-server
 /tmp
 /out-tsc
 
 # dependencies
-/front-end/node_modules/
-/front-end/.pnp
-/front-end/.pnp.js
-/front-end/.angular
+/frontend/node_modules/
+/frontend/.pnp
+/frontend/.pnp.js
+/frontend/.angular
 
 # misc
 /.sass-cache

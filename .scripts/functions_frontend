@@ -4,7 +4,7 @@
 # Function to build the frontend
 function build_frontend() {
   # Go the frontend folder
-  cd front-end || exit 1
+  cd ${FRONTEND_FOLDER_NAME} || exit 1
 
   read -p "===> Do you want to install npm dependencies for the frontend (Y|N) ? " INSTALL_NPM_DEPENDENCIES
 
