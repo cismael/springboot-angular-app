@@ -1,5 +1,5 @@
 ### STAGE 1: Build ###
-FROM maven:3.8-amazoncorretto-17 AS builder
+FROM maven:3.8-amazoncorretto-18 AS builder
 
 WORKDIR /app
 
@@ -8,7 +8,7 @@ COPY . /app/
 RUN mvn clean install
 
 ### STAGE 2: Run ###
-FROM amazoncorretto:17.0.5-alpine
+FROM amazoncorretto:18-alpine
 
 MAINTAINER cismael
 
