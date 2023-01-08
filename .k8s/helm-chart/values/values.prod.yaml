@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 
 # Namespace
-namespace: springboot-angular-app-prod
+namespace: prod-springboot-angular-app-prod
 
 # environment
 platform: prod
