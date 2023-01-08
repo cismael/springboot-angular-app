@@ -30,7 +30,7 @@ $ ./.scripts/START.sh
 
 # To build and serve the app on localhost:4200
 ```bash
-$ ./.scripts/BUILD-AND-START.sh
+$ ./.scripts/BUILD_AND_START.sh
 ```
 
 ** The server is listening on : http://localhost:4200/
