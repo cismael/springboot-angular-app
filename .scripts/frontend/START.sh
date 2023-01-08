@@ -1,11 +1,15 @@
 #!/bin/bash
 
-# Go to the script folder (useful if the script is launched from a different folder)
+# Cd to the script folder (useful if the script is launched from a different folder)
 SCRIPT_DIR="$(dirname $(realpath $0))"
-cd $SCRIPT_DIR
+cd $SCRIPT_DIR || exit 1
 
-# Then go to the frontend folder
-cd ../../front-end || exit 1
+# Cd to the parent folder (.scripts) to source needed variables and functions files
+cd .. && source source_files
 
-# Start the frontend
-npm run start:open
+# Then cd to the root folder (parent folder)
+cd ..
+
+############################################################################################################### Frontend
+# Cd to frontend folder and start it by calling the function
+cd front-end || exit 1 && npm run start:open

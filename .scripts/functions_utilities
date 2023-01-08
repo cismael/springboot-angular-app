@@ -1,0 +1,96 @@
+#!/bin/bash
+
+########################################################################################################################
+# Function to ask and build the frontend/backend if needed
+# Needs 1 parameters ($1):
+# - parameter : possible values are "backend" or "frontend"
+function ask_if_build_is_needed() {
+  if [ -z "$1" ]  # If the parameter is not set
+    then echo "The application name is not set (${FRONTEND_FOLDER_NAME}|${BACKEND_FOLDER_NAME})" && exit 1
+  fi
+
+  read -p "===> Do you want to build/rebuild the $1 (Y|N) ? " "IS_BUILD_NEEDED"
+
+  if [ "$IS_BUILD_NEEDED" == "yes" ] || [ "$IS_BUILD_NEEDED" == "YES" ] || [ "$IS_BUILD_NEEDED" == "y" ] || [ "$IS_BUILD_NEEDED" == "Y" ]
+    then
+      if [ "$1" == "${FRONTEND_FOLDER_NAME}" ]
+        then
+          # Build the frontend by calling the function that builds it
+          build_frontend
+      elif [ "$1" == "${BACKEND_FOLDER_NAME}" ]
+        then
+          # Build the backend by calling the function that builds it
+          build_backend
+          # Cd to the users-api folder (so docker image can be build from the Dockerfile)
+          cd users/users-api/ || exit 1
+      fi
+  else
+    echo "===> No need to build the $1 application"
+    if [ "$1" == "${FRONTEND_FOLDER_NAME}" ]
+      then
+        # Cd to the frontend folder (so docker image can be build from the Dockerfile)
+        cd front-end || exit 1
+    elif [ "$1" == "${BACKEND_FOLDER_NAME}" ]
+      then
+        # Cd to the backend users-api folder (so docker image can be build from the Dockerfile)
+        cd back-end/users/users-api/ || exit 1
+    fi
+  fi
+}
+
+########################################################################################################################
+# Function to check if the environment name to deploy is provided. If not ask for it.
+function check_if_an_env_name_is_provided() {
+  if [ -z "$1" ]
+    then
+      read -p "Which environment would you want to stop using helm ? (dev|staging|prod) : " ENV_TO_DEPLOY
+    else
+      ENV_TO_DEPLOY=$1
+  fi
+}
+
+########################################################################################################################
+# Function to check if the environment name to deploy is provided. If not ask for it.
+function check_if_an_env_name_is_provided() {
+  if [ -z "$1" ]
+    then
+      read -p "Which environment would you want to deploy using helm ? (dev|staging|prod) : " ENV_TO_DEPLOY
+    else
+      ENV_TO_DEPLOY=$1
+  fi
+}
+
+########################################################################################################################
+# Function to check if the provided environment name is ok
+function check_provided_env_name() {
+  for env in $ENVIRONMENTS; do
+    if [ "$env" == "$ENV_TO_DEPLOY" ]
+      then
+        echo "===> [${ENV_TO_DEPLOY}] is a known environment" && return 0 # with this return statement the script continues
+    fi
+  done
+
+  echo "===> [${ENV_TO_DEPLOY}] is an unknown environment" && exit 1 # with this exit statement the script stops
+}
+
+########################################################################################################################
+# Function to set the frontend port number to use for kubectl port forward on localhost
+function set_frontend_port_number_for_port_forward() {
+  if [ "$ENV_TO_DEPLOY" == "dev" ]
+    then FRONTEND_PORT_NUMBER=4200
+  elif [ "$ENV_TO_DEPLOY" == "staging" ]
+    then FRONTEND_PORT_NUMBER=4300
+  elif [ "$ENV_TO_DEPLOY" == "prod" ]
+    then FRONTEND_PORT_NUMBER=4400
+  fi
+}
+
+########################################################################################################################
+# Function to get the kubernetes namespace based on the environment name to stop
+function identify_the_kubernetes_namespace_to_delete() {
+  if [ "$ENV_TO_DEPLOY" == "dev" ] || [ "$ENV_TO_DEPLOY" == "staging" ]
+    then K8S_NAMESPACE="springboot-angular-app"
+  elif [ "$ENV_TO_DEPLOY" == "prod" ]
+    then K8S_NAMESPACE="prod-springboot-angular-app"
+  fi
+}

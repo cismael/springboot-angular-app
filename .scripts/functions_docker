@@ -1,0 +1,55 @@
+#!/bin/bash
+
+########################################################################################################################
+# Function to build and tag a docker image for local use, DockerHub and GitHub
+# - build docker image of the backend
+# - tag the docker image for local use
+# - tag for docker image DockerHub container registry
+# - tag for docker image GitHub container registry
+# ===> 1 parameter referring to the docker image name is mandatory
+function build_and_tag_docker_images() {
+  if [ -z "$1" ] # If the docker image name is not set
+    then
+      echo "===> The docker image name is not set" && exit 1
+    else
+      # Get the docker image name setted via the parameter
+      local DOCKER_IMAGE_NAME=$1
+  fi
+
+  docker build -f Dockerfile . \
+          --tag ${CONTAINER_REGISTRY_OWNER_USERNAME}/${DOCKER_IMAGE_NAME} \
+          --tag ${DOCKERHUB_CONTAINER_REGISTRY_URL}/${CONTAINER_REGISTRY_OWNER_USERNAME}/${DOCKER_IMAGE_NAME} \
+          --tag ${GITHUB_CONTAINER_REGISTRY_URL}/${CONTAINER_REGISTRY_OWNER_USERNAME}/${DOCKER_IMAGE_NAME}
+}
+
+########################################################################################################################
+# Function to push the frontend and the backend docker images into a container registry
+# Needs 3 parameters ($1, $2 and $3):
+# - first  : the container registry url
+# - second : the container registry owner username
+# - third  : the container registry owner password (can also be a GitHub Personal Access Token "PAT")
+function push_docker_images_to_container_registry() {
+  if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ] # If 1 of the 3 parameters is not set
+    then
+      echo "The container registry url|username|password is not set" && exit 1
+    else
+      # Get the three parameters
+      local CONTAINER_REGISTRY_URL=$1
+      local CONTAINER_REGISTRY_OWNER_USERNAME=$2
+      local CONTAINER_REGISTRY_PASSWORD=$3
+  fi
+
+  # Log in to the container registry
+  docker login ${CONTAINER_REGISTRY_URL} --username ${CONTAINER_REGISTRY_OWNER_USERNAME} --password ${CONTAINER_REGISTRY_PASSWORD}
+
+  # Backend
+  # Push the backend docker image to the container registry
+  docker push ${CONTAINER_REGISTRY_URL}/${CONTAINER_REGISTRY_OWNER_USERNAME}/$BACKEND_DOCKER_IMAGE_NAME
+
+  # Frontend
+  # Push the frontend docker image to the container registry
+  docker push ${CONTAINER_REGISTRY_URL}/${CONTAINER_REGISTRY_OWNER_USERNAME}/${FRONTEND_DOCKER_IMAGE_NAME}
+
+  # Log out from the container registry
+  docker logout ${CONTAINER_REGISTRY_URL}
+}

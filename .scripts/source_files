@@ -1,0 +1,10 @@
+#!/bin/bash
+
+################################################################################## Source needed variables and functions
+source functions_backend
+source functions_docker
+source functions_frontend
+source functions_helm
+source functions_kubernetes
+source functions_utilities
+source variables

@@ -1,0 +1,21 @@
+#!/bin/bash
+
+########################################################################################################################
+# Function to build the frontend
+function build_frontend() {
+  # Go the frontend folder
+  cd front-end || exit 1
+
+  read -p "===> Do you want to install npm dependencies for the frontend (Y|N) ? " INSTALL_NPM_DEPENDENCIES
+
+  if [ "$INSTALL_NPM_DEPENDENCIES" == "yes" ] || [ "$INSTALL_NPM_DEPENDENCIES" == "YES" ] || [ "$INSTALL_NPM_DEPENDENCIES" == "y" ] || [ "$INSTALL_NPM_DEPENDENCIES" == "Y" ]
+    then
+      # Install dependencies
+      npm install --force
+  else
+    echo "===> No npm depencies install"
+  fi
+
+  # Build and start the frontend for dev purpose
+  npm run build:dev
+}

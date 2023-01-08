@@ -1,14 +1,15 @@
 #!/bin/bash
 
-# Go to the script folder (useful if the script is launched from a different folder)
+# Cd to the script folder (useful if the script is launched from a different folder)
 SCRIPT_DIR="$(dirname $(realpath $0))"
-cd $SCRIPT_DIR
+cd $SCRIPT_DIR || exit 1
 
-# Then go to the frontend folder
-cd ../../front-end || exit 1
+# Cd to the parent folder (.scripts) to source needed variables and functions files
+cd .. && source source_files
 
-# Install dependencies
-npm install --force
+# Then cd to the root folder (parent folder)
+cd ..
 
-# Build the frontend
-npm run build:dev
+################################################################################################################ Backend
+# Build the frontend by calling the function that builds it
+build_frontend

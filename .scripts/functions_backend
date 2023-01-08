@@ -1,0 +1,46 @@
+#!/bin/bash
+
+########################################################################################################################
+# Function to set the wrapped maven executor compatible for the OS type
+function set_wrapped_maven_executor() {
+  # Set the wrapped maven executor to use
+  if [[  $OSTYPE == "linux-gnu" ]]; then
+    echo "===> This is a Linux or WSL Operating System"
+    WRAPPED_MAVEN_EXECUTOR="mvnw"
+  elif [[ $OSTYPE == "msys" ]]; then
+    echo "===> This is a Windows Operating System"
+    WRAPPED_MAVEN_EXECUTOR="mvnw.cmd"
+  else
+    echo "OS ($OSTYPE) not supported"
+    exit 1
+  fi;
+}
+
+########################################################################################################################
+# Function to build the backend
+function build_backend() {
+  # Cd to the backend folder
+  cd back-end || exit 1
+
+  # Call the function that set the maven wrapped executor
+  set_wrapped_maven_executor
+
+  # Build the backend
+  ./${WRAPPED_MAVEN_EXECUTOR} clean install -T4
+}
+
+########################################################################################################################
+# Function to start the backend apis
+function start_backend() {
+#  ROOT_FOLDER="$(basename $(pwd))"
+#  echo "===> 2 - $ROOT_FOLDER"
+#
+#  # Cd to the backend folder
+#  cd ${ROOT_FOLDER}/back-end || exit 1
+
+  # Call the function that set the maven wrapped executor
+  set_wrapped_maven_executor
+
+  # Build the backend
+  ./${WRAPPED_MAVEN_EXECUTOR} -f ./users/users-api/ spring-boot:run
+}
