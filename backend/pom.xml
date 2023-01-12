@@ -33,17 +33,17 @@
 		<sonar.projectKey>SpringBootAngularApp</sonar.projectKey>
 
 		<!-- Dependencies versions -->
-		<spring-boot.version>2.7.7</spring-boot.version>
-		<spring-aspects.version>6.0.3</spring-aspects.version>
+		<spring-boot.version>2.7.8</spring-boot.version>
+		<spring-aspects.version>6.0.5</spring-aspects.version>
 		<spring-context-support.version.version>5.9.3</spring-context-support.version.version>
 
 		<javax.validation-api.version>2.0.1.Final</javax.validation-api.version>
 		<aspectj.version>1.9.19</aspectj.version>
-		<lombok.version>1.18.24</lombok.version>
+		<lombok.version>1.18.26</lombok.version>
 		<swagger-annotations.version>1.6.9</swagger-annotations.version>
 		<swagger-annotations-core-v3.version>2.2.8</swagger-annotations-core-v3.version>
-		<jackson-bom.version>2.14.1</jackson-bom.version>
-		<jackson-databind-nullable.version>0.2.4</jackson-databind-nullable.version>
+		<jackson-bom.version>2.14.2</jackson-bom.version>
+		<jackson-databind-nullable.version>0.2.5</jackson-databind-nullable.version>
 	</properties>
 
 	<dependencyManagement>
