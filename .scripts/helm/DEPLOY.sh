@@ -12,7 +12,7 @@ cd ..
 
 ########################################################################################################################
 # Check if an environment name is provided by calling the function
-check_if_an_env_name_is_provided "$@"
+check_if_an_env_name_is_provided "Which environment would you want to deploy using helm ? (dev|staging|prod) : " "$@"
 
 # Check the provided environment name by calling the function
 check_provided_env_name
@@ -33,9 +33,9 @@ kubectl -n $K8S_NAMESPACE wait deployment ${ENV_TO_DEPLOY}-springboot-angular-ap
 set_frontend_port_number_for_port_forward
 
 # Port-forward in the background for frontend to use at localhost
-kubectl -n $K8S_NAMESPACE port-forward deploy/${ENV_TO_DEPLOY}-springboot-angular-app-frontend-deployment ${FRONTEND_PORT_NUMBER}:80 & \
+#kubectl -n $K8S_NAMESPACE port-forward deploy/${ENV_TO_DEPLOY}-springboot-angular-app-frontend-deployment ${FRONTEND_PORT_NUMBER}:80 & \
 
 # Port-forward in the background for backend to use at localhost
-kubectl -n $K8S_NAMESPACE port-forward deploy/${ENV_TO_DEPLOY}-springboot-angular-app-backend-deployment 8081:8081 & \
+#kubectl -n $K8S_NAMESPACE port-forward deploy/${ENV_TO_DEPLOY}-springboot-angular-app-backend-deployment 8081:8081 & \
 
 echo "the frontend is available here : http://localhost:${FRONTEND_PORT_NUMBER}/"

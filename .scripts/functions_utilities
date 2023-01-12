@@ -41,22 +41,11 @@ function ask_if_build_is_needed() {
 ########################################################################################################################
 # Function to check if the environment name to deploy is provided. If not ask for it.
 function check_if_an_env_name_is_provided() {
-  if [ -z "$1" ]
+  if [ -z "$1" ] || [ -z "$2" ]
     then
-      read -p "Which environment would you want to stop using helm ? (dev|staging|prod) : " ENV_TO_DEPLOY
+      read -p "$1" ENV_TO_DEPLOY
     else
-      ENV_TO_DEPLOY=$1
-  fi
-}
-
-########################################################################################################################
-# Function to check if the environment name to deploy is provided. If not ask for it.
-function check_if_an_env_name_is_provided() {
-  if [ -z "$1" ]
-    then
-      read -p "Which environment would you want to deploy using helm ? (dev|staging|prod) : " ENV_TO_DEPLOY
-    else
-      ENV_TO_DEPLOY=$1
+      ENV_TO_DEPLOY=$2
   fi
 }
 
