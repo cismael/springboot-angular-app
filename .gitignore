@@ -1,30 +1,44 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
-# IDEs and editors
+### IDEs and editors
 .idea
 *.iws
 *.iml
-/backend/*.ipr
-/backend/*.project
-/backend/*.settings
-/backend/.settings
-/backend/*generated
-/backend/.classpath
-/backend/.apt_generated
-/backend/.factorypath
-/backend/.springBeans
-/backend/.c9/
-/backend/*.launch
-/backend/.settings/
-/backend/*.sublime-workspace
+*.ipr
+*.project
+*.settings
+.settings
+*generated
+.classpath
+.apt_generated
+.factorypath
+.springBeans
+.c9/
+*.launch
+*.sublime-workspace
 
-# IDE - VSCode
+#VSCode
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
 
+
+### Backend
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# .script folder
+secrets
+
+### Frontend
 # compiled output
 /frontend/dist
 /dist-server
@@ -49,19 +63,25 @@ testem.log
 .env.test.local
 .env.production.local
 
+# testing
+/coverage
+
 # e2e
 /e2e/*.js
 /e2e/*.map
 
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# production
+/build
+
+
 # System Files
 .DS_Store
 Thumbs.db
-
-# Compiled class file
-*.class
-
-# Log file
-*.log
 
 # BlueJ files
 *.ctxt
@@ -80,17 +100,5 @@ Thumbs.db
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
-target/
-!.mvn/wrapper/maven-wrapper.jar
-
-# testing
-/coverage
-
-# production
-/build
-
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
 /helm-package-output/

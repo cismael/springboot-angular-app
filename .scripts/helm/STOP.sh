@@ -12,7 +12,7 @@ cd ..
 
 ########################################################################################################################
 # Check if an environment name is provided by calling the function
-check_if_an_env_name_is_provided "$@"
+check_if_an_env_name_is_provided "Which environment would you want to stop using helm ? (dev|staging|prod) : " "$@"
 
 # Check the provided environment name by calling the function
 check_provided_env_name

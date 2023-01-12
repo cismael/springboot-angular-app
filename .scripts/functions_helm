@@ -9,7 +9,7 @@ function package_helm_chart() {
   helm package .k8s/helm-chart/ --destination ./${HELM_PACKAGE_OUTPUT_FOLDER}
 
   # Get packed helm chart file name
-  HELM_PAKAGE_NAME=`ls ./${HELM_PACKAGE_OUTPUT_FOLDER}/*.tgz`
+  HELM_PAKAGE_NAME=$(ls ./${HELM_PACKAGE_OUTPUT_FOLDER}/*.tgz)
 
   echo "helm package name = '${HELM_PAKAGE_NAME}'"
 }

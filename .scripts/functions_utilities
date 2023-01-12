@@ -9,9 +9,9 @@ function ask_if_build_is_needed() {
     then echo "The application name is not set (${FRONTEND_FOLDER_NAME}|${BACKEND_FOLDER_NAME})" && exit 1
   fi
 
-  read -p "===> Do you want to build/rebuild the $1 (Y|N) ? " "IS_BUILD_NEEDED"
+  read -p "===> Do you want to build/rebuild the $1 (y|n) ? " "IS_BUILD_NEEDED"
 
-  if [ "$IS_BUILD_NEEDED" == "yes" ] || [ "$IS_BUILD_NEEDED" == "YES" ] || [ "$IS_BUILD_NEEDED" == "y" ] || [ "$IS_BUILD_NEEDED" == "Y" ]
+  if [[ "$IS_BUILD_NEEDED" =~ ^(y|Y|yes|Yes|YES|o|O|oui|Oui|OUI)$ ]]
     then
       if [ "$1" == "${FRONTEND_FOLDER_NAME}" ]
         then
@@ -41,22 +41,11 @@ function ask_if_build_is_needed() {
 ########################################################################################################################
 # Function to check if the environment name to deploy is provided. If not ask for it.
 function check_if_an_env_name_is_provided() {
-  if [ -z "$1" ]
+  if [ -z "$1" ] || [ -z "$2" ]
     then
-      read -p "Which environment would you want to stop using helm ? (dev|staging|prod) : " ENV_TO_DEPLOY
+      read -p "$1" ENV_TO_DEPLOY
     else
-      ENV_TO_DEPLOY=$1
-  fi
-}
-
-########################################################################################################################
-# Function to check if the environment name to deploy is provided. If not ask for it.
-function check_if_an_env_name_is_provided() {
-  if [ -z "$1" ]
-    then
-      read -p "Which environment would you want to deploy using helm ? (dev|staging|prod) : " ENV_TO_DEPLOY
-    else
-      ENV_TO_DEPLOY=$1
+      ENV_TO_DEPLOY=$2
   fi
 }
 
@@ -88,7 +77,7 @@ function set_frontend_port_number_for_port_forward() {
 ########################################################################################################################
 # Function to get the kubernetes namespace based on the environment name to stop
 function identify_the_kubernetes_namespace_to_delete() {
-  if [ "$ENV_TO_DEPLOY" == "dev" ] || [ "$ENV_TO_DEPLOY" == "staging" ]
+  if [[ "$ENV_TO_DEPLOY" =~ ^(dev|staging)$ ]]
     then K8S_NAMESPACE="springboot-angular-app"
   elif [ "$ENV_TO_DEPLOY" == "prod" ]
     then K8S_NAMESPACE="prod-springboot-angular-app"

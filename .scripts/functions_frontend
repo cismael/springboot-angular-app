@@ -6,9 +6,9 @@ function build_frontend() {
   # Go the frontend folder
   cd ${FRONTEND_FOLDER_NAME} || exit 1
 
-  read -p "===> Do you want to install npm dependencies for the frontend (Y|N) ? " INSTALL_NPM_DEPENDENCIES
+  read -p "===> Do you want to install npm dependencies for the frontend (y|n) ? " INSTALL_NPM_DEPENDENCIES
 
-  if [ "$INSTALL_NPM_DEPENDENCIES" == "yes" ] || [ "$INSTALL_NPM_DEPENDENCIES" == "YES" ] || [ "$INSTALL_NPM_DEPENDENCIES" == "y" ] || [ "$INSTALL_NPM_DEPENDENCIES" == "Y" ]
+  if [[ "$INSTALL_NPM_DEPENDENCIES" =~ ^(y|Y|yes|Yes|YES|o|O|oui|Oui|OUI)$ ]]
     then
       # Install dependencies
       npm install --force
