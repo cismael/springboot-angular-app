@@ -26,15 +26,15 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
+		<maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
 		<openapi-generator-maven-plugin.version>5.4.0</openapi-generator-maven-plugin.version>
 
 		<!-- SonarQube -->
 		<sonar.projectKey>SpringBootAngularApp</sonar.projectKey>
 
 		<!-- Dependencies versions -->
-		<spring-boot.version>2.7.8</spring-boot.version>
-		<spring-aspects.version>6.0.5</spring-aspects.version>
+		<spring-boot.version>2.7.9</spring-boot.version>
+		<spring-aspects.version>6.0.6</spring-aspects.version>
 		<spring-context-support.version.version>5.9.3</spring-context-support.version.version>
 
 		<javax.validation-api.version>2.0.1.Final</javax.validation-api.version>
