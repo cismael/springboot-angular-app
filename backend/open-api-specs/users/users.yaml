@@ -1,7 +1,9 @@
 openapi: 3.0.0
+
 info:
   version: ${project.version}
   title: Public Open API Users
+
 paths:
   /users:
     get:

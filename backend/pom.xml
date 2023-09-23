@@ -3,7 +3,7 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.springboot.angular.app</groupId>
+	<groupId>com.springboot.angular.api</groupId>
 	<artifactId>SpringBootAngularApp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
@@ -26,31 +26,33 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
-		<openapi-generator-maven-plugin.version>5.4.0</openapi-generator-maven-plugin.version>
-
 		<!-- SonarQube -->
 		<sonar.projectKey>SpringBootAngularApp</sonar.projectKey>
 
 		<!-- Dependencies versions -->
-		<spring-boot.version>2.7.11</spring-boot.version>
+		<spring-boot.version>3.1.4</spring-boot.version>
 		<spring-aspects.version>6.0.8</spring-aspects.version>
 		<spring-context-support.version.version>5.9.3</spring-context-support.version.version>
 
-		<javax.validation-api.version>2.0.1.Final</javax.validation-api.version>
+		<jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
 		<aspectj.version>1.9.19</aspectj.version>
 		<lombok.version>1.18.26</lombok.version>
 		<swagger-annotations.version>1.6.10</swagger-annotations.version>
-		<swagger-annotations-core-v3.version>2.2.9</swagger-annotations-core-v3.version>
+		<swagger-annotations-core-v3.version>2.2.16</swagger-annotations-core-v3.version>
 		<jackson-bom.version>2.14.2</jackson-bom.version>
-		<jackson-databind-nullable.version>0.2.5</jackson-databind-nullable.version>
+		<jackson-databind-nullable.version>0.2.6</jackson-databind-nullable.version>
+
+		<!-- Plugins -->
+		<maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+		<maven-resources-plugin.version>3.3.0</maven-resources-plugin.version>
+		<openapi-generator-maven-plugin.version>7.0.1</openapi-generator-maven-plugin.version>
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
 			<!-- Project modules -->
 			<dependency>
-				<groupId>com.springboot.angular.app</groupId>
+				<groupId>com.springboot.angular.api</groupId>
 				<artifactId>users-model</artifactId>
 				<version>${project.version}</version>
 			</dependency>
@@ -62,6 +64,11 @@
 				<version>${spring-boot.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-validation</artifactId>
+				<version>${spring-boot.version}</version>
 			</dependency>
 
 			<!-- Spring AOP for Performance Monitoring -->
@@ -77,9 +84,9 @@
 			</dependency>
 
 			<dependency>
-				<groupId>javax.validation</groupId>
-				<artifactId>validation-api</artifactId>
-				<version>${javax.validation-api.version}</version>
+				<groupId>jakarta.validation</groupId>
+				<artifactId>jakarta.validation-api</artifactId>
+				<version>${jakarta.validation-api.version}</version>
 			</dependency>
 
 			<!-- Utilities -->
@@ -124,9 +131,6 @@
 					<version>${openapi-generator-maven-plugin.version}</version>
 					<configuration>
 						<generatorName>spring</generatorName>
-						<configOptions>
-							<dateLibrary>java8</dateLibrary>
-						</configOptions>
 						<generateModels>true</generateModels>
 						<generateModelTests>false</generateModelTests>
 						<generateModelDocumentation>false</generateModelDocumentation>
@@ -134,6 +138,18 @@
 						<generateApiTests>false</generateApiTests>
 						<generateApiDocumentation>false</generateApiDocumentation>
 						<generateSupportingFiles>false</generateSupportingFiles>
+						<configOptions>
+							<useSpringBoot3>true</useSpringBoot3>
+							<useJakartaEe>true</useJakartaEe>
+							<dateLibrary>java8</dateLibrary>
+							<serializableModel>true</serializableModel>
+							<booleanGetterPrefix>is</booleanGetterPrefix>
+							<openApiNullable>false</openApiNullable>
+							<documentationProvider>none</documentationProvider>
+						</configOptions>
+						<typeMappings>
+							<typeMapping>Boolean=boolean</typeMapping>
+						</typeMappings>
 					</configuration>
 				</plugin>
 
@@ -165,7 +181,9 @@
 				</plugin>
 
 				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-resources-plugin</artifactId>
+					<version>${maven-resources-plugin.version}</version>
 					<executions>
 						<execution>
 							<id>copy-resources</id>
