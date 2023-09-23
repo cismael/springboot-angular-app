@@ -6,11 +6,10 @@
 
     <parent>
         <artifactId>SpringBootAngularApp</artifactId>
-        <groupId>com.springboot.angular.app</groupId>
+        <groupId>com.springboot.angular.api</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.springboot.angular.app.doc</groupId>
     <artifactId>open-api-specs</artifactId>
     <packaging>pom</packaging>
 
