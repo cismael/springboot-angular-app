@@ -5,7 +5,7 @@ services:
   # The backend app
   backend-users-api:
     container_name: backend-users-api-prod
-    image: cismael/springbootangularapp_back-end
+    image: cismael/springbootangularapp_backend
     ports:
       - "8081:8081"
     deploy:
@@ -21,7 +21,7 @@ services:
   # The frontend app
   frontend:
     container_name: frontend-prod
-    image: cismael/springbootangularapp_front-end
+    image: cismael/springbootangularapp_frontend
     ports:
       - "4200:80"
     deploy:

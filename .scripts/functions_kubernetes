@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#################################################################################################################
+# Function to create the kubernetes namespace based on the environment name to deploy
+function create_kubernetes_namespace() {
+  if [[ "$ENV_TO_DEPLOY" =~ ^(dev|staging)$ ]]
+    then K8S_NAMESPACE="springboot-angular-app"
+  elif [ "$ENV_TO_DEPLOY" == "prod" ]
+    then K8S_NAMESPACE="prod-springboot-angular-app"
+  fi
+
+  # Create the kubernetes namespace
+  kubectl create namespace ${K8S_NAMESPACE}
+}

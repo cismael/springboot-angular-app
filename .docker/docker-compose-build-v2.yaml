@@ -6,7 +6,7 @@ services:
   backend-users-api:
     container_name: backend-users-api-build-v2
     build:
-      context: ../back-end
+      context: ../backend
       dockerfile: Dockerfile-build
     ports:
       - "8081:8081"
@@ -24,7 +24,7 @@ services:
   frontend:
     container_name: frontend-build-v2
     build:
-      context: ../front-end
+      context: ../frontend
       dockerfile: Dockerfile-build-v2
     ports:
       - "4200:80"
