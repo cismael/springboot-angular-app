@@ -1,4 +1,4 @@
-FROM amazoncorretto:17.0.8-alpine
+FROM amazoncorretto:17.0.9-alpine
 
 MAINTAINER cismael
 
