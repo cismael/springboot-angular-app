@@ -35,7 +35,7 @@
 		<spring-context-support.version.version>5.9.3</spring-context-support.version.version>
 
 		<jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
-		<aspectj.version>1.9.21.1</aspectj.version>
+		<aspectj.version>1.9.21.2</aspectj.version>
 		<lombok.version>1.18.30</lombok.version>
 		<swagger-annotations.version>1.6.13</swagger-annotations.version>
 		<swagger-annotations-core-v3.version>2.2.20</swagger-annotations-core-v3.version>
