@@ -36,7 +36,7 @@
 
 		<jakarta.validation-api.version>3.1.1</jakarta.validation-api.version>
 		<aspectj.version>1.9.23</aspectj.version>
-		<lombok.version>1.18.36</lombok.version>
+		<lombok.version>1.18.38</lombok.version>
 		<swagger-annotations.version>1.6.15</swagger-annotations.version>
 		<swagger-annotations-core-v3.version>2.2.29</swagger-annotations-core-v3.version>
 		<jackson-bom.version>2.18.3</jackson-bom.version>
