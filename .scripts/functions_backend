@@ -4,12 +4,15 @@
 # Function to set the wrapped maven executor compatible for the OS type
 function set_wrapped_maven_executor() {
   # Set the wrapped maven executor to use
-  if [[  $OSTYPE == "linux-gnu" ]]; then
+  if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     echo "===> This is a Linux or WSL Operating System"
     WRAPPED_MAVEN_EXECUTOR="mvnw"
-  elif [[ $OSTYPE == "msys" ]]; then
+  elif [[ "$OSTYPE" == "msys" ]]; then
     echo "===> This is a Windows Operating System"
     WRAPPED_MAVEN_EXECUTOR="mvnw.cmd"
+  elif [[ "$OSTYPE" == "darwin"* ]]; then
+    echo "===> This is a MacOs Operating System"
+    WRAPPED_MAVEN_EXECUTOR="mvnw"
   else
     echo "OS ($OSTYPE) not supported"
     exit 1
