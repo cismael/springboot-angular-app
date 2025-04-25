@@ -39,7 +39,7 @@
 		<lombok.version>1.18.38</lombok.version>
 		<swagger-annotations.version>1.6.15</swagger-annotations.version>
 		<swagger-annotations-core-v3.version>2.2.30</swagger-annotations-core-v3.version>
-		<jackson-bom.version>2.18.3</jackson-bom.version>
+		<jackson-bom.version>2.19.0</jackson-bom.version>
 		<jackson-databind-nullable.version>0.2.6</jackson-databind-nullable.version>
 
 		<!-- Plugins -->
