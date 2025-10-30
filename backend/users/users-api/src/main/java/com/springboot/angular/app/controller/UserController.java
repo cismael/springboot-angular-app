@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @CrossOrigin
-@RequiredArgsConstructor
 @RestController
 @RequestMapping(value = "/api/users")
+@RequiredArgsConstructor
 public class UserController {
 
-	public final UserService userService;
+    private final UserService userService;
 
 	@GetMapping
 	public List<User> getUsers() {

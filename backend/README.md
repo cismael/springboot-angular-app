@@ -1,13 +1,3 @@
-# Install maven wrapper with maven wrapper plugin
-```bash
-$ mvn -N io.takari:maven:wrapper
-```
-
-## Can also specify the version of maven
-```bash
-$ mvn -N io.takari:maven:wrapper -Dmaven=3.8.6
-```
-
 # To build the app
 ```bash
 $ ./mvnw clean install 

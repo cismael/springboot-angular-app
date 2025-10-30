@@ -35,7 +35,7 @@ public class UserService {
     public User saveUser(final User user) {
         LOGGER.debug("calling method : saveUser");
         Long nextId = 0L;
-        if (this.users.size() != 0) {
+        if (!this.users.isEmpty()) {
             final User lastUser = this.users.stream().skip(this.users.size() - 1).findFirst().orElse(null);
             nextId = lastUser.getId() + 1;
         }
