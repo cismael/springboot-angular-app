@@ -3,10 +3,10 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "SpringBootAngularApp": {
+    "spring-boot-angular-app-frontend": {
+      "projectType": "application",
       "root": "",
       "sourceRoot": "src",
-      "projectType": "application",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -64,19 +64,19 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "SpringBootAngularApp:build",
+            "browserTarget": "spring-boot-angular-app-frontend:build",
             "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
             "production": {
-              "browserTarget": "SpringBootAngularApp:build:production"
+              "browserTarget": "spring-boot-angular-app-frontend:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "SpringBootAngularApp:build"
+            "browserTarget": "spring-boot-angular-app-frontend:build"
           }
         },
         "test": {
@@ -117,7 +117,7 @@
         }
       }
     },
-    "SpringBootAngularApp-e2e": {
+    "spring-boot-angular-app-frontend-e2e": {
       "root": "./e2e",
       "projectType": "application",
       "architect": {
@@ -125,7 +125,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "SpringBootAngularApp:serve"
+            "devServerTarget": "spring-boot-angular-app-frontend:serve"
           }
         },
         "lint": {
@@ -142,7 +142,6 @@
       }
     }
   },
-  "defaultProject": "SpringBootAngularApp",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",

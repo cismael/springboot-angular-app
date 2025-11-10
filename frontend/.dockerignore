@@ -1,6 +1,6 @@
 *
 !src/
-!.angular.json
+!angular.json
 !package.json
 !package-lock.json
 !tsconfig.base.json
