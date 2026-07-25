@@ -38,7 +38,7 @@
         <swagger-annotations.version>1.6.16</swagger-annotations.version>
         <swagger-annotations-core-v3.version>2.2.40</swagger-annotations-core-v3.version>
         <jackson-bom.version>2.20.1</jackson-bom.version>
-        <jackson-databind-nullable.version>0.2.6</jackson-databind-nullable.version>
+        <jackson-databind-nullable.version>0.2.11</jackson-databind-nullable.version>
 
         <!-- Utilities -->
         <openrewrite.version>6.23.0</openrewrite.version>
